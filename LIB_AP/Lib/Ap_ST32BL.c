@@ -607,6 +607,7 @@ void Ap_ST32BL_JumpToApp( u32 Address )
 
 	PowerOff();
 
+	Hw_Timer_Delay_ms(100);
 
 #if 0
     /* Reset the RCC clock configuration to the default reset state(for debug purpose) */

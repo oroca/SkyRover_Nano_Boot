@@ -395,7 +395,7 @@ LOAD /Users/imac/Develop/stm32f4/arm_gcc/gcc-arm-none-eabi-4_7-2013q3/bin/../lib
                 0x0000000000001000                _Minimum_Stack_Size = 0x1000
                 0x0000000000000001                ASSERT ((ORIGIN (FLASH) == ALIGN (ORIGIN (FLASH), 0x80)), Start of memory region flash not aligned for startup vector table)
 
-.text           0x0000000008000000     0x230c
+.text           0x0000000008000000     0x2310
                 0x0000000008000000                . = ALIGN (0x80)
                 0x0000000000000000                _isr_vectorsflash_offs = (. - 0x8000000)
  *(.isr_vectorsflash)
@@ -435,400 +435,400 @@ LOAD /Users/imac/Develop/stm32f4/arm_gcc/gcc-arm-none-eabi-4_7-2013q3/bin/../lib
                 0x00000000080002ac       0x60 Ap_ST32BL.o
                 0x00000000080002ac                Ap_ST32BL_WriteFlash
  .text.Ap_ST32BL_JumpToApp
-                0x000000000800030c       0x3c Ap_ST32BL.o
+                0x000000000800030c       0x40 Ap_ST32BL.o
                 0x000000000800030c                Ap_ST32BL_JumpToApp
  .text.Ap_ST32BL_Main
-                0x0000000008000348      0x124 Ap_ST32BL.o
-                0x0000000008000348                Ap_ST32BL_Main
+                0x000000000800034c      0x124 Ap_ST32BL.o
+                0x000000000800034c                Ap_ST32BL_Main
  .text.Hw_StartUp_Init
-                0x000000000800046c       0xf8 Hw_StartUp.o
-                0x000000000800046c                Hw_StartUp_Init
- .text.Hw_Init  0x0000000008000564       0x60 Hw.o
-                0x0000000008000564                Hw_Init
+                0x0000000008000470       0xf8 Hw_StartUp.o
+                0x0000000008000470                Hw_StartUp_Init
+ .text.Hw_Init  0x0000000008000568       0x60 Hw.o
+                0x0000000008000568                Hw_Init
  .text.Hw_ISR_UART2_Handler
-                0x00000000080005c4       0x2c Hw_Uart.o
-                0x00000000080005c4                Hw_ISR_UART2_Handler
+                0x00000000080005c8       0x2c Hw_Uart.o
+                0x00000000080005c8                Hw_ISR_UART2_Handler
  .text.Hw_ISR_UART1_Handler
-                0x00000000080005f0       0x2c Hw_Uart.o
-                0x00000000080005f0                Hw_ISR_UART1_Handler
+                0x00000000080005f4       0x2c Hw_Uart.o
+                0x00000000080005f4                Hw_ISR_UART1_Handler
  .text.Hw_Uart_Putch.part.0
-                0x000000000800061c       0x18 Hw_Uart.o
+                0x0000000008000620       0x18 Hw_Uart.o
  .text.Hw_Uart_Open_COM1
-                0x0000000008000634       0x68 Hw_Uart.o
-                0x0000000008000634                Hw_Uart_Open_COM1
+                0x0000000008000638       0x68 Hw_Uart.o
+                0x0000000008000638                Hw_Uart_Open_COM1
  .text.Hw_Uart_Open_COM2
-                0x000000000800069c       0x9c Hw_Uart.o
-                0x000000000800069c                Hw_Uart_Open_COM2
+                0x00000000080006a0       0x9c Hw_Uart.o
+                0x00000000080006a0                Hw_Uart_Open_COM2
  .text.Hw_Uart_Init
-                0x0000000008000738       0x40 Hw_Uart.o
-                0x0000000008000738                Hw_Uart_Init
+                0x000000000800073c       0x40 Hw_Uart.o
+                0x000000000800073c                Hw_Uart_Init
  .text.Hw_Uart_Getch
-                0x0000000008000778       0x3c Hw_Uart.o
-                0x0000000008000778                Hw_Uart_Getch
+                0x000000000800077c       0x3c Hw_Uart.o
+                0x000000000800077c                Hw_Uart_Getch
  .text.Hw_Uart_Putch
-                0x00000000080007b4       0x3c Hw_Uart.o
-                0x00000000080007b4                Hw_Uart_Putch
+                0x00000000080007b8       0x3c Hw_Uart.o
+                0x00000000080007b8                Hw_Uart_Putch
  .text.Hw_Uart_PrintEx
-                0x00000000080007f0       0x1c Hw_Uart.o
-                0x00000000080007f0                Hw_Uart_PrintEx
+                0x00000000080007f4       0x1c Hw_Uart.o
+                0x00000000080007f4                Hw_Uart_PrintEx
  .text.Hw_PLL_Init
-                0x000000000800080c       0x84 Hw_PLL.o
-                0x000000000800080c                Hw_PLL_Init
+                0x0000000008000810       0x84 Hw_PLL.o
+                0x0000000008000810                Hw_PLL_Init
  .text.Hw_ISR_Init
-                0x0000000008000890       0x10 Hw_ISR.o
-                0x0000000008000890                Hw_ISR_Init
+                0x0000000008000894       0x10 Hw_ISR.o
+                0x0000000008000894                Hw_ISR_Init
  .text.Hw_ISR_SetIRQFunc
-                0x00000000080008a0       0x10 Hw_ISR.o
-                0x00000000080008a0                Hw_ISR_SetIRQFunc
+                0x00000000080008a4       0x10 Hw_ISR.o
+                0x00000000080008a4                Hw_ISR_SetIRQFunc
  .text.Hw_ISR_SetIRQFuncByAddr
-                0x00000000080008b0       0x10 Hw_ISR.o
-                0x00000000080008b0                Hw_ISR_SetIRQFuncByAddr
+                0x00000000080008b4       0x10 Hw_ISR.o
+                0x00000000080008b4                Hw_ISR_SetIRQFuncByAddr
  .text.Hw_Timer_SetupISR
-                0x00000000080008c0       0x18 Hw_Timer.o
-                0x00000000080008c0                Hw_Timer_SetupISR
+                0x00000000080008c4       0x18 Hw_Timer.o
+                0x00000000080008c4                Hw_Timer_SetupISR
  .text.Hw_Timer_Setup
-                0x00000000080008d8       0x38 Hw_Timer.o
-                0x00000000080008d8                Hw_Timer_Setup
+                0x00000000080008dc       0x38 Hw_Timer.o
+                0x00000000080008dc                Hw_Timer_Setup
  .text.Hw_Timer_Init
-                0x0000000008000910       0x48 Hw_Timer.o
-                0x0000000008000910                Hw_Timer_Init
+                0x0000000008000914       0x48 Hw_Timer.o
+                0x0000000008000914                Hw_Timer_Init
  .text.Hw_Timer_Tick
-                0x0000000008000958       0x64 Hw_Timer.o
-                0x0000000008000958                Hw_Timer_Tick
+                0x000000000800095c       0x64 Hw_Timer.o
+                0x000000000800095c                Hw_Timer_Tick
  .text.Hw_Timer_ISR
-                0x00000000080009bc        0xc Hw_Timer.o
-                0x00000000080009bc                Hw_Timer_ISR
+                0x00000000080009c0        0xc Hw_Timer.o
+                0x00000000080009c0                Hw_Timer_ISR
  .text.Hw_Timer_Set
-                0x00000000080009c8       0x1c Hw_Timer.o
-                0x00000000080009c8                Hw_Timer_Set
+                0x00000000080009cc       0x1c Hw_Timer.o
+                0x00000000080009cc                Hw_Timer_Set
  .text.Hw_Timer_Start
-                0x00000000080009e4       0x14 Hw_Timer.o
-                0x00000000080009e4                Hw_Timer_Start
+                0x00000000080009e8       0x14 Hw_Timer.o
+                0x00000000080009e8                Hw_Timer_Start
  .text.Hw_Timer_Delay_ms
-                0x00000000080009f8       0x14 Hw_Timer.o
-                0x00000000080009f8                Hw_Timer_Delay_ms
+                0x00000000080009fc       0x14 Hw_Timer.o
+                0x00000000080009fc                Hw_Timer_Delay_ms
  .text.Hw_Uart_Q_Init
-                0x0000000008000a0c       0x1c Hw_Uart_Q.o
-                0x0000000008000a0c                Hw_Uart_Q_Init
+                0x0000000008000a10       0x1c Hw_Uart_Q.o
+                0x0000000008000a10                Hw_Uart_Q_Init
  .text.HW_UART_Q_SIZE
-                0x0000000008000a28       0x30 Hw_Uart_Q.o
-                0x0000000008000a28                HW_UART_Q_SIZE
+                0x0000000008000a2c       0x30 Hw_Uart_Q.o
+                0x0000000008000a2c                HW_UART_Q_SIZE
  .text.HW_UART_Q_VAILD
-                0x0000000008000a58        0xc Hw_Uart_Q.o
-                0x0000000008000a58                HW_UART_Q_VAILD
+                0x0000000008000a5c        0xc Hw_Uart_Q.o
+                0x0000000008000a5c                HW_UART_Q_VAILD
  .text.Hw_Uart_Q_Push
-                0x0000000008000a64       0x58 Hw_Uart_Q.o
-                0x0000000008000a64                Hw_Uart_Q_Push
+                0x0000000008000a68       0x58 Hw_Uart_Q.o
+                0x0000000008000a68                Hw_Uart_Q_Push
  .text.Hw_Uart_Q_Pop
-                0x0000000008000abc       0x54 Hw_Uart_Q.o
-                0x0000000008000abc                Hw_Uart_Q_Pop
+                0x0000000008000ac0       0x54 Hw_Uart_Q.o
+                0x0000000008000ac0                Hw_Uart_Q_Pop
  .text.Hw_Led_Off
-                0x0000000008000b10       0x20 Hw_Led.o
-                0x0000000008000b10                Hw_Led_Off
+                0x0000000008000b14       0x20 Hw_Led.o
+                0x0000000008000b14                Hw_Led_Off
  .text.Hw_Led_Init
-                0x0000000008000b30       0x5c Hw_Led.o
-                0x0000000008000b30                Hw_Led_Init
+                0x0000000008000b34       0x5c Hw_Led.o
+                0x0000000008000b34                Hw_Led_Init
  .text.Hw_Led_Toggle
-                0x0000000008000b8c       0x20 Hw_Led.o
-                0x0000000008000b8c                Hw_Led_Toggle
+                0x0000000008000b90       0x20 Hw_Led.o
+                0x0000000008000b90                Hw_Led_Toggle
  .text.Hw_VCom_Init
-                0x0000000008000bac       0x38 Hw_VCom.o
-                0x0000000008000bac                Hw_VCom_Init
+                0x0000000008000bb0       0x38 Hw_VCom.o
+                0x0000000008000bb0                Hw_VCom_Init
  .text.Hw_VCom_Getch
-                0x0000000008000be4       0x2c Hw_VCom.o
-                0x0000000008000be4                Hw_VCom_Getch
+                0x0000000008000be8       0x2c Hw_VCom.o
+                0x0000000008000be8                Hw_VCom_Getch
  .text.Hw_VCom_Putch
-                0x0000000008000c10        0xc Hw_VCom.o
-                0x0000000008000c10                Hw_VCom_Putch
+                0x0000000008000c14        0xc Hw_VCom.o
+                0x0000000008000c14                Hw_VCom_Putch
  .text.Hw_VCom_Q_Init
-                0x0000000008000c1c       0x14 Hw_VCom_Q.o
-                0x0000000008000c1c                Hw_VCom_Q_Init
+                0x0000000008000c20       0x14 Hw_VCom_Q.o
+                0x0000000008000c20                Hw_VCom_Q_Init
  .text.HW_VCOM_Q_SIZE
-                0x0000000008000c30       0x34 Hw_VCom_Q.o
-                0x0000000008000c30                HW_VCOM_Q_SIZE
+                0x0000000008000c34       0x34 Hw_VCom_Q.o
+                0x0000000008000c34                HW_VCOM_Q_SIZE
  .text.HW_VCOM_Q_VAILD
-                0x0000000008000c64        0xc Hw_VCom_Q.o
-                0x0000000008000c64                HW_VCOM_Q_VAILD
+                0x0000000008000c68        0xc Hw_VCom_Q.o
+                0x0000000008000c68                HW_VCOM_Q_VAILD
  .text.Hw_VCom_Q_Push
-                0x0000000008000c70       0x5c Hw_VCom_Q.o
-                0x0000000008000c70                Hw_VCom_Q_Push
+                0x0000000008000c74       0x5c Hw_VCom_Q.o
+                0x0000000008000c74                Hw_VCom_Q_Push
  .text.Hw_VCom_Q_Pop
-                0x0000000008000ccc       0x50 Hw_VCom_Q.o
-                0x0000000008000ccc                Hw_VCom_Q_Pop
+                0x0000000008000cd0       0x50 Hw_VCom_Q.o
+                0x0000000008000cd0                Hw_VCom_Q_Pop
  .text.EP1_IN_Callback
-                0x0000000008000d1c       0x6c usb_endp.o
-                0x0000000008000d1c                EP1_IN_Callback
+                0x0000000008000d20       0x6c usb_endp.o
+                0x0000000008000d20                EP1_IN_Callback
  .text.EP3_OUT_Callback
-                0x0000000008000d88       0x2c usb_endp.o
-                0x0000000008000d88                EP3_OUT_Callback
+                0x0000000008000d8c       0x2c usb_endp.o
+                0x0000000008000d8c                EP3_OUT_Callback
  .text.SOF_Callback
-                0x0000000008000db4       0x2c usb_endp.o
-                0x0000000008000db4                SOF_Callback
+                0x0000000008000db8       0x2c usb_endp.o
+                0x0000000008000db8                SOF_Callback
  .text.USB_Istr
-                0x0000000008000de0       0x84 usb_istr.o
-                0x0000000008000de0                USB_Istr
+                0x0000000008000de4       0x84 usb_istr.o
+                0x0000000008000de4                USB_Istr
  .text.Virtual_Com_Port_SetConfiguration
-                0x0000000008000e64       0x18 usb_prop.o
-                0x0000000008000e64                Virtual_Com_Port_SetConfiguration
+                0x0000000008000e68       0x18 usb_prop.o
+                0x0000000008000e68                Virtual_Com_Port_SetConfiguration
  .text.Virtual_Com_Port_SetDeviceAddress
-                0x0000000008000e7c        0xc usb_prop.o
-                0x0000000008000e7c                Virtual_Com_Port_SetDeviceAddress
+                0x0000000008000e80        0xc usb_prop.o
+                0x0000000008000e80                Virtual_Com_Port_SetDeviceAddress
  .text.Virtual_Com_Port_Status_In
-                0x0000000008000e88       0x14 usb_prop.o
-                0x0000000008000e88                Virtual_Com_Port_Status_In
+                0x0000000008000e8c       0x14 usb_prop.o
+                0x0000000008000e8c                Virtual_Com_Port_Status_In
  .text.Virtual_Com_Port_Status_Out
-                0x0000000008000e9c        0x2 usb_prop.o
-                0x0000000008000e9c                Virtual_Com_Port_Status_Out
- *fill*         0x0000000008000e9e        0x2 00
+                0x0000000008000ea0        0x2 usb_prop.o
+                0x0000000008000ea0                Virtual_Com_Port_Status_Out
+ *fill*         0x0000000008000ea2        0x2 00
  .text.Virtual_Com_Port_Data_Setup
-                0x0000000008000ea0       0x5c usb_prop.o
-                0x0000000008000ea0                Virtual_Com_Port_Data_Setup
+                0x0000000008000ea4       0x5c usb_prop.o
+                0x0000000008000ea4                Virtual_Com_Port_Data_Setup
  .text.Virtual_Com_Port_NoData_Setup
-                0x0000000008000efc       0x24 usb_prop.o
-                0x0000000008000efc                Virtual_Com_Port_NoData_Setup
+                0x0000000008000f00       0x24 usb_prop.o
+                0x0000000008000f00                Virtual_Com_Port_NoData_Setup
  .text.Virtual_Com_Port_Get_Interface_Setting
-                0x0000000008000f20        0xe usb_prop.o
-                0x0000000008000f20                Virtual_Com_Port_Get_Interface_Setting
- *fill*         0x0000000008000f2e        0x2 00
+                0x0000000008000f24        0xe usb_prop.o
+                0x0000000008000f24                Virtual_Com_Port_Get_Interface_Setting
+ *fill*         0x0000000008000f32        0x2 00
  .text.Virtual_Com_Port_GetLineCoding
-                0x0000000008000f30       0x18 usb_prop.o
-                0x0000000008000f30                Virtual_Com_Port_GetLineCoding
+                0x0000000008000f34       0x18 usb_prop.o
+                0x0000000008000f34                Virtual_Com_Port_GetLineCoding
  .text.Virtual_Com_Port_SetLineCoding
-                0x0000000008000f48       0x18 usb_prop.o
-                0x0000000008000f48                Virtual_Com_Port_SetLineCoding
+                0x0000000008000f4c       0x18 usb_prop.o
+                0x0000000008000f4c                Virtual_Com_Port_SetLineCoding
  .text.Virtual_Com_Port_GetStringDescriptor
-                0x0000000008000f60       0x28 usb_prop.o
-                0x0000000008000f60                Virtual_Com_Port_GetStringDescriptor
+                0x0000000008000f64       0x28 usb_prop.o
+                0x0000000008000f64                Virtual_Com_Port_GetStringDescriptor
  .text.Virtual_Com_Port_GetConfigDescriptor
-                0x0000000008000f88       0x14 usb_prop.o
-                0x0000000008000f88                Virtual_Com_Port_GetConfigDescriptor
+                0x0000000008000f8c       0x14 usb_prop.o
+                0x0000000008000f8c                Virtual_Com_Port_GetConfigDescriptor
  .text.Virtual_Com_Port_GetDeviceDescriptor
-                0x0000000008000f9c       0x14 usb_prop.o
-                0x0000000008000f9c                Virtual_Com_Port_GetDeviceDescriptor
+                0x0000000008000fa0       0x14 usb_prop.o
+                0x0000000008000fa0                Virtual_Com_Port_GetDeviceDescriptor
  .text.Virtual_Com_Port_Reset
-                0x0000000008000fb0       0xfc usb_prop.o
-                0x0000000008000fb0                Virtual_Com_Port_Reset
+                0x0000000008000fb4       0xfc usb_prop.o
+                0x0000000008000fb4                Virtual_Com_Port_Reset
  .text.Virtual_Com_Port_init
-                0x00000000080010ac       0x44 usb_prop.o
-                0x00000000080010ac                Virtual_Com_Port_init
- .text.PowerOn  0x00000000080010f0       0x34 usb_pwr.o
-                0x00000000080010f0                PowerOn
+                0x00000000080010b0       0x44 usb_prop.o
+                0x00000000080010b0                Virtual_Com_Port_init
+ .text.PowerOn  0x00000000080010f4       0x34 usb_pwr.o
+                0x00000000080010f4                PowerOn
  .text.PowerOff
-                0x0000000008001124       0x28 usb_pwr.o
-                0x0000000008001124                PowerOff
+                0x0000000008001128       0x28 usb_pwr.o
+                0x0000000008001128                PowerOff
  .text.USBWakeUp_IRQHandler
-                0x000000000800114c       0x10 hw_config.o
-                0x000000000800114c                USBWakeUp_IRQHandler
+                0x0000000008001150       0x10 hw_config.o
+                0x0000000008001150                USBWakeUp_IRQHandler
  .text.IntToUnicode
-                0x000000000800115c       0x2a hw_config.o
- *fill*         0x0000000008001186        0x2 00
+                0x0000000008001160       0x2a hw_config.o
+ *fill*         0x000000000800118a        0x2 00
  .text.USB_LP_IRQHandler
-                0x0000000008001188        0xc hw_config.o
-                0x0000000008001188                USB_LP_IRQHandler
+                0x000000000800118c        0xc hw_config.o
+                0x000000000800118c                USB_LP_IRQHandler
  .text.Set_System
-                0x0000000008001194       0x1c hw_config.o
-                0x0000000008001194                Set_System
+                0x0000000008001198       0x1c hw_config.o
+                0x0000000008001198                Set_System
  .text.Set_USBClock
-                0x00000000080011b0       0x18 hw_config.o
-                0x00000000080011b0                Set_USBClock
+                0x00000000080011b4       0x18 hw_config.o
+                0x00000000080011b4                Set_USBClock
  .text.USB_Interrupts_Config
-                0x00000000080011c8       0x90 hw_config.o
-                0x00000000080011c8                USB_Interrupts_Config
+                0x00000000080011cc       0x90 hw_config.o
+                0x00000000080011cc                USB_Interrupts_Config
  .text.USB_Cable_Config
-                0x0000000008001258       0x18 hw_config.o
-                0x0000000008001258                USB_Cable_Config
+                0x000000000800125c       0x18 hw_config.o
+                0x000000000800125c                USB_Cable_Config
  .text.USB_To_USART_Send_Data
-                0x0000000008001270       0x34 hw_config.o
-                0x0000000008001270                USB_To_USART_Send_Data
+                0x0000000008001274       0x34 hw_config.o
+                0x0000000008001274                USB_To_USART_Send_Data
  .text.Handle_USBAsynchXfer
-                0x00000000080012a4       0x9c hw_config.o
-                0x00000000080012a4                Handle_USBAsynchXfer
+                0x00000000080012a8       0x9c hw_config.o
+                0x00000000080012a8                Handle_USBAsynchXfer
  .text.USB_Send_Data
-                0x0000000008001340       0x30 hw_config.o
-                0x0000000008001340                USB_Send_Data
+                0x0000000008001344       0x30 hw_config.o
+                0x0000000008001344                USB_Send_Data
  .text.Get_SerialNum
-                0x0000000008001370       0x34 hw_config.o
-                0x0000000008001370                Get_SerialNum
+                0x0000000008001374       0x34 hw_config.o
+                0x0000000008001374                Get_SerialNum
  .text.Standard_GetConfiguration
-                0x00000000080013a4       0x24 usb_core.o
-                0x00000000080013a4                Standard_GetConfiguration
+                0x00000000080013a8       0x24 usb_core.o
+                0x00000000080013a8                Standard_GetConfiguration
  .text.Standard_GetInterface
-                0x00000000080013c8       0x24 usb_core.o
-                0x00000000080013c8                Standard_GetInterface
+                0x00000000080013cc       0x24 usb_core.o
+                0x00000000080013cc                Standard_GetInterface
  .text.Standard_GetStatus
-                0x00000000080013ec       0x9c usb_core.o
-                0x00000000080013ec                Standard_GetStatus
+                0x00000000080013f0       0x9c usb_core.o
+                0x00000000080013f0                Standard_GetStatus
  .text.DataStageIn
-                0x0000000008001488       0xb0 usb_core.o
+                0x000000000800148c       0xb0 usb_core.o
  .text.Standard_SetConfiguration
-                0x0000000008001538       0x38 usb_core.o
-                0x0000000008001538                Standard_SetConfiguration
+                0x000000000800153c       0x38 usb_core.o
+                0x000000000800153c                Standard_SetConfiguration
  .text.Standard_SetInterface
-                0x0000000008001570       0x48 usb_core.o
-                0x0000000008001570                Standard_SetInterface
+                0x0000000008001574       0x48 usb_core.o
+                0x0000000008001574                Standard_SetInterface
  .text.Standard_ClearFeature
-                0x00000000080015b8       0xec usb_core.o
-                0x00000000080015b8                Standard_ClearFeature
+                0x00000000080015bc       0xec usb_core.o
+                0x00000000080015bc                Standard_ClearFeature
  .text.Standard_SetEndPointFeature
-                0x00000000080016a4       0x8c usb_core.o
-                0x00000000080016a4                Standard_SetEndPointFeature
+                0x00000000080016a8       0x8c usb_core.o
+                0x00000000080016a8                Standard_SetEndPointFeature
  .text.Standard_SetDeviceFeature
-                0x0000000008001730       0x24 usb_core.o
-                0x0000000008001730                Standard_SetDeviceFeature
+                0x0000000008001734       0x24 usb_core.o
+                0x0000000008001734                Standard_SetDeviceFeature
  .text.Standard_GetDescriptorData
-                0x0000000008001754       0x1c usb_core.o
-                0x0000000008001754                Standard_GetDescriptorData
+                0x0000000008001758       0x1c usb_core.o
+                0x0000000008001758                Standard_GetDescriptorData
  .text.Post0_Process
-                0x0000000008001770       0x44 usb_core.o
-                0x0000000008001770                Post0_Process
+                0x0000000008001774       0x44 usb_core.o
+                0x0000000008001774                Post0_Process
  .text.Out0_Process
-                0x00000000080017b4       0xe4 usb_core.o
-                0x00000000080017b4                Out0_Process
+                0x00000000080017b8       0xe4 usb_core.o
+                0x00000000080017b8                Out0_Process
  .text.Setup0_Process
-                0x0000000008001898      0x30c usb_core.o
-                0x0000000008001898                Setup0_Process
+                0x000000000800189c      0x30c usb_core.o
+                0x000000000800189c                Setup0_Process
  .text.SetDeviceAddress
-                0x0000000008001ba4       0x40 usb_core.o
-                0x0000000008001ba4                SetDeviceAddress
+                0x0000000008001ba8       0x40 usb_core.o
+                0x0000000008001ba8                SetDeviceAddress
  .text.In0_Process
-                0x0000000008001be4       0x68 usb_core.o
-                0x0000000008001be4                In0_Process
+                0x0000000008001be8       0x68 usb_core.o
+                0x0000000008001be8                In0_Process
  .text.NOP_Process
-                0x0000000008001c4c        0x2 usb_core.o
-                0x0000000008001c4c                NOP_Process
- *fill*         0x0000000008001c4e        0x2 00
+                0x0000000008001c50        0x2 usb_core.o
+                0x0000000008001c50                NOP_Process
+ *fill*         0x0000000008001c52        0x2 00
  .text.USB_Init
-                0x0000000008001c50       0x38 usb_init.o
-                0x0000000008001c50                USB_Init
+                0x0000000008001c54       0x38 usb_init.o
+                0x0000000008001c54                USB_Init
  .text.UserToPMABufferCopy
-                0x0000000008001c88       0x2e usb_mem.o
-                0x0000000008001c88                UserToPMABufferCopy
+                0x0000000008001c8c       0x2e usb_mem.o
+                0x0000000008001c8c                UserToPMABufferCopy
  .text.PMAToUserBufferCopy
-                0x0000000008001cb6       0x24 usb_mem.o
-                0x0000000008001cb6                PMAToUserBufferCopy
- *fill*         0x0000000008001cda        0x2 00
+                0x0000000008001cba       0x24 usb_mem.o
+                0x0000000008001cba                PMAToUserBufferCopy
+ *fill*         0x0000000008001cde        0x2 00
  .text.SetBTABLE
-                0x0000000008001cdc       0x10 usb_regs.o
-                0x0000000008001cdc                SetBTABLE
+                0x0000000008001ce0       0x10 usb_regs.o
+                0x0000000008001ce0                SetBTABLE
  .text.SetEPType
-                0x0000000008001cec       0x18 usb_regs.o
-                0x0000000008001cec                SetEPType
+                0x0000000008001cf0       0x18 usb_regs.o
+                0x0000000008001cf0                SetEPType
  .text.SetEPTxStatus
-                0x0000000008001d04       0x3a usb_regs.o
-                0x0000000008001d04                SetEPTxStatus
+                0x0000000008001d08       0x3a usb_regs.o
+                0x0000000008001d08                SetEPTxStatus
  .text.SetEPRxStatus
-                0x0000000008001d3e       0x3a usb_regs.o
-                0x0000000008001d3e                SetEPRxStatus
+                0x0000000008001d42       0x3a usb_regs.o
+                0x0000000008001d42                SetEPRxStatus
  .text.SetEPTxValid
-                0x0000000008001d78       0x22 usb_regs.o
-                0x0000000008001d78                SetEPTxValid
+                0x0000000008001d7c       0x22 usb_regs.o
+                0x0000000008001d7c                SetEPTxValid
  .text.SetEPRxValid
-                0x0000000008001d9a       0x22 usb_regs.o
-                0x0000000008001d9a                SetEPRxValid
+                0x0000000008001d9e       0x22 usb_regs.o
+                0x0000000008001d9e                SetEPRxValid
  .text.Clear_Status_Out
-                0x0000000008001dbc       0x1e usb_regs.o
-                0x0000000008001dbc                Clear_Status_Out
+                0x0000000008001dc0       0x1e usb_regs.o
+                0x0000000008001dc0                Clear_Status_Out
  .text.ClearDTOG_RX
-                0x0000000008001dda       0x24 usb_regs.o
-                0x0000000008001dda                ClearDTOG_RX
+                0x0000000008001dde       0x24 usb_regs.o
+                0x0000000008001dde                ClearDTOG_RX
  .text.ClearDTOG_TX
-                0x0000000008001dfe       0x24 usb_regs.o
-                0x0000000008001dfe                ClearDTOG_TX
- *fill*         0x0000000008001e22        0x2 00
+                0x0000000008001e02       0x24 usb_regs.o
+                0x0000000008001e02                ClearDTOG_TX
+ *fill*         0x0000000008001e26        0x2 00
  .text.SetEPTxAddr
-                0x0000000008001e24       0x20 usb_regs.o
-                0x0000000008001e24                SetEPTxAddr
+                0x0000000008001e28       0x20 usb_regs.o
+                0x0000000008001e28                SetEPTxAddr
  .text.SetEPRxAddr
-                0x0000000008001e44       0x20 usb_regs.o
-                0x0000000008001e44                SetEPRxAddr
+                0x0000000008001e48       0x20 usb_regs.o
+                0x0000000008001e48                SetEPRxAddr
  .text.GetEPTxAddr
-                0x0000000008001e64       0x1c usb_regs.o
-                0x0000000008001e64                GetEPTxAddr
+                0x0000000008001e68       0x1c usb_regs.o
+                0x0000000008001e68                GetEPTxAddr
  .text.GetEPRxAddr
-                0x0000000008001e80       0x1c usb_regs.o
-                0x0000000008001e80                GetEPRxAddr
+                0x0000000008001e84       0x1c usb_regs.o
+                0x0000000008001e84                GetEPRxAddr
  .text.SetEPTxCount
-                0x0000000008001e9c       0x1c usb_regs.o
-                0x0000000008001e9c                SetEPTxCount
+                0x0000000008001ea0       0x1c usb_regs.o
+                0x0000000008001ea0                SetEPTxCount
  .text.SetEPRxCount
-                0x0000000008001eb8       0x3c usb_regs.o
-                0x0000000008001eb8                SetEPRxCount
+                0x0000000008001ebc       0x3c usb_regs.o
+                0x0000000008001ebc                SetEPRxCount
  .text.GetEPRxCount
-                0x0000000008001ef4       0x20 usb_regs.o
-                0x0000000008001ef4                GetEPRxCount
+                0x0000000008001ef8       0x20 usb_regs.o
+                0x0000000008001ef8                GetEPRxCount
  .text.ByteSwap
-                0x0000000008001f14        0xa usb_regs.o
-                0x0000000008001f14                ByteSwap
- *fill*         0x0000000008001f1e        0x2 00
+                0x0000000008001f18        0xa usb_regs.o
+                0x0000000008001f18                ByteSwap
+ *fill*         0x0000000008001f22        0x2 00
  .text.USB_SIL_Init
-                0x0000000008001f20       0x20 usb_sil.o
-                0x0000000008001f20                USB_SIL_Init
+                0x0000000008001f24       0x20 usb_sil.o
+                0x0000000008001f24                USB_SIL_Init
  .text.USB_SIL_Read
-                0x0000000008001f40       0x30 usb_sil.o
-                0x0000000008001f40                USB_SIL_Read
- .text.CTR_LP   0x0000000008001f70      0x194 usb_int.o
-                0x0000000008001f70                CTR_LP
+                0x0000000008001f44       0x30 usb_sil.o
+                0x0000000008001f44                USB_SIL_Read
+ .text.CTR_LP   0x0000000008001f74      0x194 usb_int.o
+                0x0000000008001f74                CTR_LP
  .text.FLASH_Unlock
-                0x0000000008002104       0x18 stm32f10x_flash.o
-                0x0000000008002104                FLASH_Unlock
+                0x0000000008002108       0x18 stm32f10x_flash.o
+                0x0000000008002108                FLASH_Unlock
  .text.FLASH_Lock
-                0x000000000800211c       0x10 stm32f10x_flash.o
-                0x000000000800211c                FLASH_Lock
+                0x0000000008002120       0x10 stm32f10x_flash.o
+                0x0000000008002120                FLASH_Lock
  .text.FLASH_ClearFlag
-                0x000000000800212c        0xc stm32f10x_flash.o
-                0x000000000800212c                FLASH_ClearFlag
+                0x0000000008002130        0xc stm32f10x_flash.o
+                0x0000000008002130                FLASH_ClearFlag
  .text.FLASH_GetStatus
-                0x0000000008002138       0x28 stm32f10x_flash.o
-                0x0000000008002138                FLASH_GetStatus
+                0x000000000800213c       0x28 stm32f10x_flash.o
+                0x000000000800213c                FLASH_GetStatus
  .text.FLASH_WaitForLastOperation
-                0x0000000008002160       0x38 stm32f10x_flash.o
-                0x0000000008002160                FLASH_WaitForLastOperation
+                0x0000000008002164       0x38 stm32f10x_flash.o
+                0x0000000008002164                FLASH_WaitForLastOperation
  .text.FLASH_ProgramWord
-                0x0000000008002198       0x4c stm32f10x_flash.o
-                0x0000000008002198                FLASH_ProgramWord
+                0x000000000800219c       0x4c stm32f10x_flash.o
+                0x000000000800219c                FLASH_ProgramWord
  .text.FLASH_ErasePage
-                0x00000000080021e4       0x44 stm32f10x_flash.o
-                0x00000000080021e4                FLASH_ErasePage
+                0x00000000080021e8       0x44 stm32f10x_flash.o
+                0x00000000080021e8                FLASH_ErasePage
  *(.stub .gnu.linkonce.t.*)
  *(.rodata .rodata.* .gnu.linkonce.r.*)
  .rodata.str1.1
-                0x0000000008002228       0x31 main.o
+                0x000000000800222c       0x31 main.o
  .rodata.Virtual_Com_Port_StringVendor
-                0x0000000008002259       0x26 usb_desc.o
-                0x0000000008002259                Virtual_Com_Port_StringVendor
+                0x000000000800225d       0x26 usb_desc.o
+                0x000000000800225d                Virtual_Com_Port_StringVendor
  .rodata.Virtual_Com_Port_DeviceDescriptor
-                0x000000000800227f       0x12 usb_desc.o
-                0x000000000800227f                Virtual_Com_Port_DeviceDescriptor
+                0x0000000008002283       0x12 usb_desc.o
+                0x0000000008002283                Virtual_Com_Port_DeviceDescriptor
  .rodata.Virtual_Com_Port_StringLangID
-                0x0000000008002291        0x4 usb_desc.o
-                0x0000000008002291                Virtual_Com_Port_StringLangID
+                0x0000000008002295        0x4 usb_desc.o
+                0x0000000008002295                Virtual_Com_Port_StringLangID
  .rodata.Virtual_Com_Port_StringProduct
-                0x0000000008002295       0x32 usb_desc.o
-                0x0000000008002295                Virtual_Com_Port_StringProduct
+                0x0000000008002299       0x32 usb_desc.o
+                0x0000000008002299                Virtual_Com_Port_StringProduct
  .rodata.Virtual_Com_Port_ConfigDescriptor
-                0x00000000080022c7       0x43 usb_desc.o
-                0x00000000080022c7                Virtual_Com_Port_ConfigDescriptor
+                0x00000000080022cb       0x43 usb_desc.o
+                0x00000000080022cb                Virtual_Com_Port_ConfigDescriptor
  *(.glue_7 .glue_7t)
  .glue_7        0x0000000000000000        0x0 linker stubs
  .glue_7t       0x0000000000000000        0x0 linker stubs
-                0x000000000800230c                . = ALIGN (0x4)
- *fill*         0x000000000800230a        0x2 00
-                0x000000000800230c                _etext = .
-                0x000000000800230c                _sidata = _etext
+                0x0000000008002310                . = ALIGN (0x4)
+ *fill*         0x000000000800230e        0x2 00
+                0x0000000008002310                _etext = .
+                0x0000000008002310                _sidata = _etext
 
-.vfp11_veneer   0x000000000800230c        0x0
+.vfp11_veneer   0x0000000008002310        0x0
  .vfp11_veneer  0x0000000000000000        0x0 linker stubs
 
-.v4_bx          0x000000000800230c        0x0
+.v4_bx          0x0000000008002310        0x0
  .v4_bx         0x0000000000000000        0x0 linker stubs
 
-.iplt           0x000000000800230c        0x0
+.iplt           0x0000000008002310        0x0
  .iplt          0x0000000000000000        0x0 main.o
 
-.rel.dyn        0x000000000800230c        0x0
+.rel.dyn        0x0000000008002310        0x0
  .rel.iplt      0x0000000000000000        0x0 main.o
 
-.data           0x0000000020000000       0xe4 load address 0x000000000800230c
+.data           0x0000000020000000       0xe4 load address 0x0000000008002310
                 0x0000000020000000                . = .
                 0x0000000020000000                . = ALIGN (0x4)
                 0x0000000020000000                _sdata = .
@@ -874,7 +874,7 @@ LOAD /Users/imac/Develop/stm32f4/arm_gcc/gcc-arm-none-eabi-4_7-2013q3/bin/../lib
  *fill*         0x00000000200000e2        0x2 00
                 0x00000000200000e4                _edata = .
 
-.igot.plt       0x00000000200000e4        0x0 load address 0x00000000080023f0
+.igot.plt       0x00000000200000e4        0x0 load address 0x00000000080023f4
  .igot.plt      0x0000000000000000        0x0 main.o
 
 .bss            0x0000000020000200     0x112c load address 0x0000000008002600
@@ -979,33 +979,33 @@ LOAD /Users/imac/Develop/stm32f4/arm_gcc/gcc-arm-none-eabi-4_7-2013q3/bin/../lib
                 0x0000000020004c00                PROVIDE (_Stack_Init, __Stack_Init)
 OUTPUT(main.elf elf32-littlearm)
 
-.debug_info     0x0000000000000000     0x6bab
+.debug_info     0x0000000000000000     0x6bc1
  .debug_info    0x0000000000000000      0x335 main.o
  .debug_info    0x0000000000000335       0x9a Ap.o
- .debug_info    0x00000000000003cf      0x662 Ap_ST32BL.o
- .debug_info    0x0000000000000a31      0x163 Hw_StartUp.o
- .debug_info    0x0000000000000b94      0x140 Hw.o
- .debug_info    0x0000000000000cd4      0x681 Hw_Uart.o
- .debug_info    0x0000000000001355       0x93 Hw_PLL.o
- .debug_info    0x00000000000013e8      0x175 Hw_ISR.o
- .debug_info    0x000000000000155d      0x44c Hw_Timer.o
- .debug_info    0x00000000000019a9      0x26c Hw_Uart_Q.o
- .debug_info    0x0000000000001c15      0x1e4 Hw_Led.o
- .debug_info    0x0000000000001df9      0x183 Hw_VCom.o
- .debug_info    0x0000000000001f7c      0x26d Hw_VCom_Q.o
- .debug_info    0x00000000000021e9      0x169 usb_desc.o
- .debug_info    0x0000000000002352      0x244 usb_endp.o
- .debug_info    0x0000000000002596      0x2e0 usb_istr.o
- .debug_info    0x0000000000002876      0xb04 usb_prop.o
- .debug_info    0x000000000000337a      0x35f usb_pwr.o
- .debug_info    0x00000000000036d9      0x63a hw_config.o
- .debug_info    0x0000000000003d13      0xdc8 usb_core.o
- .debug_info    0x0000000000004adb      0x482 usb_init.o
- .debug_info    0x0000000000004f5d      0x1ad usb_mem.o
- .debug_info    0x000000000000510a      0xdc5 usb_regs.o
- .debug_info    0x0000000000005ecf      0x1cd usb_sil.o
- .debug_info    0x000000000000609c      0x1a2 usb_int.o
- .debug_info    0x000000000000623e      0x96d stm32f10x_flash.o
+ .debug_info    0x00000000000003cf      0x678 Ap_ST32BL.o
+ .debug_info    0x0000000000000a47      0x163 Hw_StartUp.o
+ .debug_info    0x0000000000000baa      0x140 Hw.o
+ .debug_info    0x0000000000000cea      0x681 Hw_Uart.o
+ .debug_info    0x000000000000136b       0x93 Hw_PLL.o
+ .debug_info    0x00000000000013fe      0x175 Hw_ISR.o
+ .debug_info    0x0000000000001573      0x44c Hw_Timer.o
+ .debug_info    0x00000000000019bf      0x26c Hw_Uart_Q.o
+ .debug_info    0x0000000000001c2b      0x1e4 Hw_Led.o
+ .debug_info    0x0000000000001e0f      0x183 Hw_VCom.o
+ .debug_info    0x0000000000001f92      0x26d Hw_VCom_Q.o
+ .debug_info    0x00000000000021ff      0x169 usb_desc.o
+ .debug_info    0x0000000000002368      0x244 usb_endp.o
+ .debug_info    0x00000000000025ac      0x2e0 usb_istr.o
+ .debug_info    0x000000000000288c      0xb04 usb_prop.o
+ .debug_info    0x0000000000003390      0x35f usb_pwr.o
+ .debug_info    0x00000000000036ef      0x63a hw_config.o
+ .debug_info    0x0000000000003d29      0xdc8 usb_core.o
+ .debug_info    0x0000000000004af1      0x482 usb_init.o
+ .debug_info    0x0000000000004f73      0x1ad usb_mem.o
+ .debug_info    0x0000000000005120      0xdc5 usb_regs.o
+ .debug_info    0x0000000000005ee5      0x1cd usb_sil.o
+ .debug_info    0x00000000000060b2      0x1a2 usb_int.o
+ .debug_info    0x0000000000006254      0x96d stm32f10x_flash.o
 
 .debug_abbrev   0x0000000000000000     0x23e5
  .debug_abbrev  0x0000000000000000      0x180 main.o
@@ -1142,33 +1142,33 @@ OUTPUT(main.elf elf32-littlearm)
  .debug_ranges  0x0000000000000828       0x30 usb_int.o
  .debug_ranges  0x0000000000000858       0xc0 stm32f10x_flash.o
 
-.debug_line     0x0000000000000000     0x2b3b
+.debug_line     0x0000000000000000     0x2b37
  .debug_line    0x0000000000000000       0xac main.o
  .debug_line    0x00000000000000ac       0x44 Ap.o
- .debug_line    0x00000000000000f0      0x26d Ap_ST32BL.o
- .debug_line    0x000000000000035d      0x133 Hw_StartUp.o
- .debug_line    0x0000000000000490       0x8c Hw.o
- .debug_line    0x000000000000051c      0x241 Hw_Uart.o
- .debug_line    0x000000000000075d       0x60 Hw_PLL.o
- .debug_line    0x00000000000007bd       0x7a Hw_ISR.o
- .debug_line    0x0000000000000837      0x1b7 Hw_Timer.o
- .debug_line    0x00000000000009ee       0xde Hw_Uart_Q.o
- .debug_line    0x0000000000000acc       0xd0 Hw_Led.o
- .debug_line    0x0000000000000b9c       0xb3 Hw_VCom.o
- .debug_line    0x0000000000000c4f       0xe1 Hw_VCom_Q.o
- .debug_line    0x0000000000000d30       0xd6 usb_desc.o
- .debug_line    0x0000000000000e06      0x12c usb_endp.o
- .debug_line    0x0000000000000f32      0x12e usb_istr.o
- .debug_line    0x0000000000001060      0x296 usb_prop.o
- .debug_line    0x00000000000012f6      0x233 usb_pwr.o
- .debug_line    0x0000000000001529      0x2c4 hw_config.o
- .debug_line    0x00000000000017ed      0x438 usb_core.o
- .debug_line    0x0000000000001c25      0x101 usb_init.o
- .debug_line    0x0000000000001d26      0x12d usb_mem.o
- .debug_line    0x0000000000001e53      0x716 usb_regs.o
- .debug_line    0x0000000000002569      0x128 usb_sil.o
- .debug_line    0x0000000000002691      0x177 usb_int.o
- .debug_line    0x0000000000002808      0x333 stm32f10x_flash.o
+ .debug_line    0x00000000000000f0      0x269 Ap_ST32BL.o
+ .debug_line    0x0000000000000359      0x133 Hw_StartUp.o
+ .debug_line    0x000000000000048c       0x8c Hw.o
+ .debug_line    0x0000000000000518      0x241 Hw_Uart.o
+ .debug_line    0x0000000000000759       0x60 Hw_PLL.o
+ .debug_line    0x00000000000007b9       0x7a Hw_ISR.o
+ .debug_line    0x0000000000000833      0x1b7 Hw_Timer.o
+ .debug_line    0x00000000000009ea       0xde Hw_Uart_Q.o
+ .debug_line    0x0000000000000ac8       0xd0 Hw_Led.o
+ .debug_line    0x0000000000000b98       0xb3 Hw_VCom.o
+ .debug_line    0x0000000000000c4b       0xe1 Hw_VCom_Q.o
+ .debug_line    0x0000000000000d2c       0xd6 usb_desc.o
+ .debug_line    0x0000000000000e02      0x12c usb_endp.o
+ .debug_line    0x0000000000000f2e      0x12e usb_istr.o
+ .debug_line    0x000000000000105c      0x296 usb_prop.o
+ .debug_line    0x00000000000012f2      0x233 usb_pwr.o
+ .debug_line    0x0000000000001525      0x2c4 hw_config.o
+ .debug_line    0x00000000000017e9      0x438 usb_core.o
+ .debug_line    0x0000000000001c21      0x101 usb_init.o
+ .debug_line    0x0000000000001d22      0x12d usb_mem.o
+ .debug_line    0x0000000000001e4f      0x716 usb_regs.o
+ .debug_line    0x0000000000002565      0x128 usb_sil.o
+ .debug_line    0x000000000000268d      0x177 usb_int.o
+ .debug_line    0x0000000000002804      0x333 stm32f10x_flash.o
 
 .debug_str      0x0000000000000000     0x22f6
  .debug_str     0x0000000000000000      0x224 main.o
@@ -1308,32 +1308,32 @@ OUTPUT(main.elf elf32-littlearm)
  .ARM.attributes
                 0x00000000000004fb       0x33 stm32f10x_flash.o
 
-.debug_frame    0x0000000000000000     0x14e0
+.debug_frame    0x0000000000000000     0x14e4
  .debug_frame   0x0000000000000000       0x4c main.o
  .debug_frame   0x000000000000004c       0x2c Ap.o
- .debug_frame   0x0000000000000078      0x13c Ap_ST32BL.o
- .debug_frame   0x00000000000001b4       0x30 Hw_StartUp.o
- .debug_frame   0x00000000000001e4       0x5c Hw.o
- .debug_frame   0x0000000000000240      0x1e0 Hw_Uart.o
- .debug_frame   0x0000000000000420       0x20 Hw_PLL.o
- .debug_frame   0x0000000000000440       0x40 Hw_ISR.o
- .debug_frame   0x0000000000000480      0x140 Hw_Timer.o
- .debug_frame   0x00000000000005c0       0x9c Hw_Uart_Q.o
- .debug_frame   0x000000000000065c       0x70 Hw_Led.o
- .debug_frame   0x00000000000006cc       0x78 Hw_VCom.o
- .debug_frame   0x0000000000000744       0x9c Hw_VCom_Q.o
- .debug_frame   0x00000000000007e0       0x68 usb_endp.o
- .debug_frame   0x0000000000000848       0x30 usb_istr.o
- .debug_frame   0x0000000000000878      0x148 usb_prop.o
- .debug_frame   0x00000000000009c0       0xa4 usb_pwr.o
- .debug_frame   0x0000000000000a64      0x15c hw_config.o
- .debug_frame   0x0000000000000bc0      0x1e0 usb_core.o
- .debug_frame   0x0000000000000da0       0x2c usb_init.o
- .debug_frame   0x0000000000000dcc       0x48 usb_mem.o
- .debug_frame   0x0000000000000e14      0x3d8 usb_regs.o
- .debug_frame   0x00000000000011ec       0x60 usb_sil.o
- .debug_frame   0x000000000000124c       0x54 usb_int.o
- .debug_frame   0x00000000000012a0      0x240 stm32f10x_flash.o
+ .debug_frame   0x0000000000000078      0x140 Ap_ST32BL.o
+ .debug_frame   0x00000000000001b8       0x30 Hw_StartUp.o
+ .debug_frame   0x00000000000001e8       0x5c Hw.o
+ .debug_frame   0x0000000000000244      0x1e0 Hw_Uart.o
+ .debug_frame   0x0000000000000424       0x20 Hw_PLL.o
+ .debug_frame   0x0000000000000444       0x40 Hw_ISR.o
+ .debug_frame   0x0000000000000484      0x140 Hw_Timer.o
+ .debug_frame   0x00000000000005c4       0x9c Hw_Uart_Q.o
+ .debug_frame   0x0000000000000660       0x70 Hw_Led.o
+ .debug_frame   0x00000000000006d0       0x78 Hw_VCom.o
+ .debug_frame   0x0000000000000748       0x9c Hw_VCom_Q.o
+ .debug_frame   0x00000000000007e4       0x68 usb_endp.o
+ .debug_frame   0x000000000000084c       0x30 usb_istr.o
+ .debug_frame   0x000000000000087c      0x148 usb_prop.o
+ .debug_frame   0x00000000000009c4       0xa4 usb_pwr.o
+ .debug_frame   0x0000000000000a68      0x15c hw_config.o
+ .debug_frame   0x0000000000000bc4      0x1e0 usb_core.o
+ .debug_frame   0x0000000000000da4       0x2c usb_init.o
+ .debug_frame   0x0000000000000dd0       0x48 usb_mem.o
+ .debug_frame   0x0000000000000e18      0x3d8 usb_regs.o
+ .debug_frame   0x00000000000011f0       0x60 usb_sil.o
+ .debug_frame   0x0000000000001250       0x54 usb_int.o
+ .debug_frame   0x00000000000012a4      0x240 stm32f10x_flash.o
 
 Cross Reference Table
 

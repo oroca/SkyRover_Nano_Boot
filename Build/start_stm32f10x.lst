@@ -1183,6 +1183,13 @@
  574              		@ args = 0, pretend = 0, frame = 0
  575              		@ frame_needed = 0, uses_anonymous_args = 0
  576              	.LVL53:
+ 577 0000 38B5     		push	{r3, r4, r5, lr}
+ 578              	.LCFI6:
+ 579              		.cfi_def_cfa_offset 16
+ 580              		.cfi_offset 3, -16
+ 581              		.cfi_offset 4, -12
+ 582              		.cfi_offset 5, -8
+ 583              		.cfi_offset 14, -4
  588:../LIB_AP/Lib/Ap_ST32BL.c **** 	pFunction JumpToApp;
  589:../LIB_AP/Lib/Ap_ST32BL.c **** 	u32 	  JumpAddress;
  590:../LIB_AP/Lib/Ap_ST32BL.c **** 	u32 	  RegData;
@@ -1191,16 +1198,9 @@
  593:../LIB_AP/Lib/Ap_ST32BL.c **** 
  594:../LIB_AP/Lib/Ap_ST32BL.c **** 
  595:../LIB_AP/Lib/Ap_ST32BL.c **** 	JumpAddress =  *(u32 *)(HW_ST32BL_FLASH_START_ADDRESS + 4);
- 577              		.loc 1 595 0
- 578 0000 094B     		ldr	r3, .L86
- 579              	.LVL54:
- 587:../LIB_AP/Lib/Ap_ST32BL.c **** {
- 580              		.loc 1 587 0
- 581 0002 10B5     		push	{r4, lr}
- 582              	.LCFI6:
- 583              		.cfi_def_cfa_offset 8
- 584              		.cfi_offset 4, -8
- 585              		.cfi_offset 14, -4
+ 584              		.loc 1 595 0
+ 585 0002 0A4B     		ldr	r3, .L86
+ 586              	.LVL54:
  596:../LIB_AP/Lib/Ap_ST32BL.c **** 	
  597:../LIB_AP/Lib/Ap_ST32BL.c **** 
  598:../LIB_AP/Lib/Ap_ST32BL.c **** 	JumpToApp = (pFunction) JumpAddress;
@@ -1208,524 +1208,529 @@
  600:../LIB_AP/Lib/Ap_ST32BL.c **** 
  601:../LIB_AP/Lib/Ap_ST32BL.c **** 	//Lb_printf("jump..\n");
  602:../LIB_AP/Lib/Ap_ST32BL.c **** 	Hw_Timer_Delay_ms(100);
- 586              		.loc 1 602 0
- 587 0004 6420     		movs	r0, #100
- 588              	.LVL55:
- 589 0006 0949     		ldr	r1, .L86+4
+ 587              		.loc 1 602 0
+ 588 0004 6420     		movs	r0, #100
+ 589              	.LVL55:
+ 590 0006 0A4C     		ldr	r4, .L86+4
  598:../LIB_AP/Lib/Ap_ST32BL.c **** 	JumpToApp = (pFunction) JumpAddress;
- 590              		.loc 1 598 0
- 591 0008 1C68     		ldr	r4, [r3, #0]
- 592              	.LVL56:
- 593              		.loc 1 602 0
- 594 000a 8847     		blx	r1
- 595              	.LVL57:
+ 591              		.loc 1 598 0
+ 592 0008 1D68     		ldr	r5, [r3, #0]
+ 593              	.LVL56:
+ 594              		.loc 1 602 0
+ 595 000a A047     		blx	r4
+ 596              	.LVL57:
  603:../LIB_AP/Lib/Ap_ST32BL.c **** 
  604:../LIB_AP/Lib/Ap_ST32BL.c **** 	//REG_RCC_AHBENR  = 0x00000014;
  605:../LIB_AP/Lib/Ap_ST32BL.c **** 	//REG_RCC_APB1ENR = 0x00000000;
  606:../LIB_AP/Lib/Ap_ST32BL.c **** 	//REG_RCC_APB2ENR = 0x00000000;	
  607:../LIB_AP/Lib/Ap_ST32BL.c **** 
  608:../LIB_AP/Lib/Ap_ST32BL.c **** 	PowerOff();
- 596              		.loc 1 608 0
- 597 000c 0848     		ldr	r0, .L86+8
- 598 000e 8047     		blx	r0
- 599              	.LVL58:
+ 597              		.loc 1 608 0
+ 598 000c 0948     		ldr	r0, .L86+8
+ 599 000e 8047     		blx	r0
+ 600              	.LVL58:
  609:../LIB_AP/Lib/Ap_ST32BL.c **** 
- 610:../LIB_AP/Lib/Ap_ST32BL.c **** 
- 611:../LIB_AP/Lib/Ap_ST32BL.c **** #if 0
- 612:../LIB_AP/Lib/Ap_ST32BL.c ****     /* Reset the RCC clock configuration to the default reset state(for debug purpose) */
- 613:../LIB_AP/Lib/Ap_ST32BL.c ****     /* Set HSION bit */
- 614:../LIB_AP/Lib/Ap_ST32BL.c ****     REG_RCC_CR |= (uint32_t) 0x00000001;
- 615:../LIB_AP/Lib/Ap_ST32BL.c **** 
- 616:../LIB_AP/Lib/Ap_ST32BL.c ****     /* Reset SW, HPRE, PPRE1, PPRE2, ADCPRE and MCO bits */
- 617:../LIB_AP/Lib/Ap_ST32BL.c ****     REG_RCC_CFGR &= (uint32_t) 0xF8FF0000;
- 618:../LIB_AP/Lib/Ap_ST32BL.c **** 
- 619:../LIB_AP/Lib/Ap_ST32BL.c ****     /* Reset HSEON, CSSON and PLLON bits */
- 620:../LIB_AP/Lib/Ap_ST32BL.c ****     REG_RCC_CR &= (uint32_t) 0xFEF6FFFF;
- 621:../LIB_AP/Lib/Ap_ST32BL.c **** 
- 622:../LIB_AP/Lib/Ap_ST32BL.c ****     /* Reset HSEBYP bit */
- 623:../LIB_AP/Lib/Ap_ST32BL.c ****     REG_RCC_CR &= (uint32_t) 0xFFFBFFFF;
- 624:../LIB_AP/Lib/Ap_ST32BL.c **** 
- 625:../LIB_AP/Lib/Ap_ST32BL.c ****     /* Reset PLLSRC, PLLXTPRE, PLLMUL and USBPRE/OTGFSPRE bits */
- 626:../LIB_AP/Lib/Ap_ST32BL.c ****     REG_RCC_CFGR &= (uint32_t) 0xFF80FFFF;
- 627:../LIB_AP/Lib/Ap_ST32BL.c **** 
- 628:../LIB_AP/Lib/Ap_ST32BL.c ****     /* Disable all interrupts and clear pending bits  */
- 629:../LIB_AP/Lib/Ap_ST32BL.c ****     REG_RCC_CIR = 0x009F0000;
- 630:../LIB_AP/Lib/Ap_ST32BL.c **** 
- 631:../LIB_AP/Lib/Ap_ST32BL.c ****     REG_SCB_VTOR = (uint32_t)0x08000000;     /* Vector Table Relocation in Internal FLASH. */
- 632:../LIB_AP/Lib/Ap_ST32BL.c **** #endif
- 633:../LIB_AP/Lib/Ap_ST32BL.c **** 
+ 610:../LIB_AP/Lib/Ap_ST32BL.c **** 	Hw_Timer_Delay_ms(100);
+ 601              		.loc 1 610 0
+ 602 0010 6420     		movs	r0, #100
+ 603 0012 A047     		blx	r4
+ 604              	.LVL59:
+ 611:../LIB_AP/Lib/Ap_ST32BL.c **** 
+ 612:../LIB_AP/Lib/Ap_ST32BL.c **** #if 0
+ 613:../LIB_AP/Lib/Ap_ST32BL.c ****     /* Reset the RCC clock configuration to the default reset state(for debug purpose) */
+ 614:../LIB_AP/Lib/Ap_ST32BL.c ****     /* Set HSION bit */
+ 615:../LIB_AP/Lib/Ap_ST32BL.c ****     REG_RCC_CR |= (uint32_t) 0x00000001;
+ 616:../LIB_AP/Lib/Ap_ST32BL.c **** 
+ 617:../LIB_AP/Lib/Ap_ST32BL.c ****     /* Reset SW, HPRE, PPRE1, PPRE2, ADCPRE and MCO bits */
+ 618:../LIB_AP/Lib/Ap_ST32BL.c ****     REG_RCC_CFGR &= (uint32_t) 0xF8FF0000;
+ 619:../LIB_AP/Lib/Ap_ST32BL.c **** 
+ 620:../LIB_AP/Lib/Ap_ST32BL.c ****     /* Reset HSEON, CSSON and PLLON bits */
+ 621:../LIB_AP/Lib/Ap_ST32BL.c ****     REG_RCC_CR &= (uint32_t) 0xFEF6FFFF;
+ 622:../LIB_AP/Lib/Ap_ST32BL.c **** 
+ 623:../LIB_AP/Lib/Ap_ST32BL.c ****     /* Reset HSEBYP bit */
+ 624:../LIB_AP/Lib/Ap_ST32BL.c ****     REG_RCC_CR &= (uint32_t) 0xFFFBFFFF;
+ 625:../LIB_AP/Lib/Ap_ST32BL.c **** 
+ 626:../LIB_AP/Lib/Ap_ST32BL.c ****     /* Reset PLLSRC, PLLXTPRE, PLLMUL and USBPRE/OTGFSPRE bits */
+ 627:../LIB_AP/Lib/Ap_ST32BL.c ****     REG_RCC_CFGR &= (uint32_t) 0xFF80FFFF;
+ 628:../LIB_AP/Lib/Ap_ST32BL.c **** 
+ 629:../LIB_AP/Lib/Ap_ST32BL.c ****     /* Disable all interrupts and clear pending bits  */
+ 630:../LIB_AP/Lib/Ap_ST32BL.c ****     REG_RCC_CIR = 0x009F0000;
+ 631:../LIB_AP/Lib/Ap_ST32BL.c **** 
+ 632:../LIB_AP/Lib/Ap_ST32BL.c ****     REG_SCB_VTOR = (uint32_t)0x08000000;     /* Vector Table Relocation in Internal FLASH. */
+ 633:../LIB_AP/Lib/Ap_ST32BL.c **** #endif
  634:../LIB_AP/Lib/Ap_ST32BL.c **** 
- 635:../LIB_AP/Lib/Ap_ST32BL.c **** 	REG_RCC_APB1RSTR = 0xFFFFFFFF;
- 600              		.loc 1 635 0
- 601 0010 0849     		ldr	r1, .L86+12
- 636:../LIB_AP/Lib/Ap_ST32BL.c **** 	REG_RCC_APB2RSTR = 0xFFFFFFFF;
- 602              		.loc 1 636 0
- 603 0012 094B     		ldr	r3, .L86+16
- 635:../LIB_AP/Lib/Ap_ST32BL.c **** 	REG_RCC_APB1RSTR = 0xFFFFFFFF;
- 604              		.loc 1 635 0
- 605 0014 4FF0FF32 		mov	r2, #-1
- 637:../LIB_AP/Lib/Ap_ST32BL.c **** 	REG_RCC_APB1RSTR = 0x00000000;
- 606              		.loc 1 637 0
- 607 0018 0020     		movs	r0, #0
- 635:../LIB_AP/Lib/Ap_ST32BL.c **** 	REG_RCC_APB1RSTR = 0xFFFFFFFF;
- 608              		.loc 1 635 0
- 609 001a 0A60     		str	r2, [r1, #0]
- 636:../LIB_AP/Lib/Ap_ST32BL.c **** 	REG_RCC_APB2RSTR = 0xFFFFFFFF;
- 610              		.loc 1 636 0
- 611 001c 1A60     		str	r2, [r3, #0]
- 612              		.loc 1 637 0
- 613 001e 0860     		str	r0, [r1, #0]
- 638:../LIB_AP/Lib/Ap_ST32BL.c **** 	REG_RCC_APB2RSTR = 0x00000000;
- 614              		.loc 1 638 0
- 615 0020 1860     		str	r0, [r3, #0]
- 639:../LIB_AP/Lib/Ap_ST32BL.c **** 
+ 635:../LIB_AP/Lib/Ap_ST32BL.c **** 
+ 636:../LIB_AP/Lib/Ap_ST32BL.c **** 	REG_RCC_APB1RSTR = 0xFFFFFFFF;
+ 605              		.loc 1 636 0
+ 606 0014 0849     		ldr	r1, .L86+12
+ 637:../LIB_AP/Lib/Ap_ST32BL.c **** 	REG_RCC_APB2RSTR = 0xFFFFFFFF;
+ 607              		.loc 1 637 0
+ 608 0016 094B     		ldr	r3, .L86+16
+ 636:../LIB_AP/Lib/Ap_ST32BL.c **** 	REG_RCC_APB1RSTR = 0xFFFFFFFF;
+ 609              		.loc 1 636 0
+ 610 0018 4FF0FF32 		mov	r2, #-1
+ 638:../LIB_AP/Lib/Ap_ST32BL.c **** 	REG_RCC_APB1RSTR = 0x00000000;
+ 611              		.loc 1 638 0
+ 612 001c 0020     		movs	r0, #0
+ 636:../LIB_AP/Lib/Ap_ST32BL.c **** 	REG_RCC_APB1RSTR = 0xFFFFFFFF;
+ 613              		.loc 1 636 0
+ 614 001e 0A60     		str	r2, [r1, #0]
+ 637:../LIB_AP/Lib/Ap_ST32BL.c **** 	REG_RCC_APB2RSTR = 0xFFFFFFFF;
+ 615              		.loc 1 637 0
+ 616 0020 1A60     		str	r2, [r3, #0]
+ 617              		.loc 1 638 0
+ 618 0022 0860     		str	r0, [r1, #0]
+ 639:../LIB_AP/Lib/Ap_ST32BL.c **** 	REG_RCC_APB2RSTR = 0x00000000;
+ 619              		.loc 1 639 0
+ 620 0024 1860     		str	r0, [r3, #0]
  640:../LIB_AP/Lib/Ap_ST32BL.c **** 
- 641:../LIB_AP/Lib/Ap_ST32BL.c **** 	/*
- 642:../LIB_AP/Lib/Ap_ST32BL.c **** 	RegData = 0xFFFFFFFF;
- 643:../LIB_AP/Lib/Ap_ST32BL.c **** 
- 644:../LIB_AP/Lib/Ap_ST32BL.c **** 	CLR_BIT(RegData, 17);			// UART2
- 645:../LIB_AP/Lib/Ap_ST32BL.c **** 	CLR_BIT(RegData, 18);			// UART3
- 646:../LIB_AP/Lib/Ap_ST32BL.c **** 	CLR_BIT(RegData, 19);			// UART4
- 647:../LIB_AP/Lib/Ap_ST32BL.c **** 	CLR_BIT(RegData, 20);			// UART5
- 648:../LIB_AP/Lib/Ap_ST32BL.c **** 
- 649:../LIB_AP/Lib/Ap_ST32BL.c **** 	REG_RCC_APB1RSTR = RegData;
- 650:../LIB_AP/Lib/Ap_ST32BL.c **** 
+ 641:../LIB_AP/Lib/Ap_ST32BL.c **** 
+ 642:../LIB_AP/Lib/Ap_ST32BL.c **** 	/*
+ 643:../LIB_AP/Lib/Ap_ST32BL.c **** 	RegData = 0xFFFFFFFF;
+ 644:../LIB_AP/Lib/Ap_ST32BL.c **** 
+ 645:../LIB_AP/Lib/Ap_ST32BL.c **** 	CLR_BIT(RegData, 17);			// UART2
+ 646:../LIB_AP/Lib/Ap_ST32BL.c **** 	CLR_BIT(RegData, 18);			// UART3
+ 647:../LIB_AP/Lib/Ap_ST32BL.c **** 	CLR_BIT(RegData, 19);			// UART4
+ 648:../LIB_AP/Lib/Ap_ST32BL.c **** 	CLR_BIT(RegData, 20);			// UART5
+ 649:../LIB_AP/Lib/Ap_ST32BL.c **** 
+ 650:../LIB_AP/Lib/Ap_ST32BL.c **** 	REG_RCC_APB1RSTR = RegData;
  651:../LIB_AP/Lib/Ap_ST32BL.c **** 
- 652:../LIB_AP/Lib/Ap_ST32BL.c **** 	RegData = 0xFFFFFFFF;
- 653:../LIB_AP/Lib/Ap_ST32BL.c **** 
- 654:../LIB_AP/Lib/Ap_ST32BL.c **** 	CLR_BIT(RegData, 14);			// UART1
- 655:../LIB_AP/Lib/Ap_ST32BL.c **** 
- 656:../LIB_AP/Lib/Ap_ST32BL.c **** 	
- 657:../LIB_AP/Lib/Ap_ST32BL.c **** 	REG_RCC_APB2RSTR = RegData;
- 658:../LIB_AP/Lib/Ap_ST32BL.c **** 	*/
- 659:../LIB_AP/Lib/Ap_ST32BL.c **** 
- 660:../LIB_AP/Lib/Ap_ST32BL.c **** 	//-- Remap된 IO가 있으면 초기화
- 661:../LIB_AP/Lib/Ap_ST32BL.c **** 	//
- 662:../LIB_AP/Lib/Ap_ST32BL.c **** 	//REG_AFIO_MAPR    = 0x00000000;
- 663:../LIB_AP/Lib/Ap_ST32BL.c **** 	//REG_AFIO_MAPR2   = 0x00000000;
- 664:../LIB_AP/Lib/Ap_ST32BL.c **** 
+ 652:../LIB_AP/Lib/Ap_ST32BL.c **** 
+ 653:../LIB_AP/Lib/Ap_ST32BL.c **** 	RegData = 0xFFFFFFFF;
+ 654:../LIB_AP/Lib/Ap_ST32BL.c **** 
+ 655:../LIB_AP/Lib/Ap_ST32BL.c **** 	CLR_BIT(RegData, 14);			// UART1
+ 656:../LIB_AP/Lib/Ap_ST32BL.c **** 
+ 657:../LIB_AP/Lib/Ap_ST32BL.c **** 	
+ 658:../LIB_AP/Lib/Ap_ST32BL.c **** 	REG_RCC_APB2RSTR = RegData;
+ 659:../LIB_AP/Lib/Ap_ST32BL.c **** 	*/
+ 660:../LIB_AP/Lib/Ap_ST32BL.c **** 
+ 661:../LIB_AP/Lib/Ap_ST32BL.c **** 	//-- Remap된 IO가 있으면 초기화
+ 662:../LIB_AP/Lib/Ap_ST32BL.c **** 	//
+ 663:../LIB_AP/Lib/Ap_ST32BL.c **** 	//REG_AFIO_MAPR    = 0x00000000;
+ 664:../LIB_AP/Lib/Ap_ST32BL.c **** 	//REG_AFIO_MAPR2   = 0x00000000;
  665:../LIB_AP/Lib/Ap_ST32BL.c **** 
  666:../LIB_AP/Lib/Ap_ST32BL.c **** 
- 667:../LIB_AP/Lib/Ap_ST32BL.c ****     //REG_RCC_CR |= 0x00000001;
- 668:../LIB_AP/Lib/Ap_ST32BL.c **** 
- 669:../LIB_AP/Lib/Ap_ST32BL.c ****     /* Reset SW, HPRE, PPRE1, PPRE2, ADCPRE and MCO bits */
- 670:../LIB_AP/Lib/Ap_ST32BL.c ****     //REG_RCC_CFGR &= 0xF8FF0000;
- 671:../LIB_AP/Lib/Ap_ST32BL.c **** 
- 672:../LIB_AP/Lib/Ap_ST32BL.c ****     /* Reset HSEON, CSSON and PLLON bits */
- 673:../LIB_AP/Lib/Ap_ST32BL.c ****     //REG_RCC_CR &= 0xFEF6FFFF;
- 674:../LIB_AP/Lib/Ap_ST32BL.c **** 
- 675:../LIB_AP/Lib/Ap_ST32BL.c ****     /* Reset HSEBYP bit */
- 676:../LIB_AP/Lib/Ap_ST32BL.c ****     //REG_RCC_CR &= 0xFFFBFFFF;
- 677:../LIB_AP/Lib/Ap_ST32BL.c **** 
- 678:../LIB_AP/Lib/Ap_ST32BL.c ****     /* Reset PLLSRC, PLLXTPRE, PLLMUL and USBPRE/OTGFSPRE bits */
- 679:../LIB_AP/Lib/Ap_ST32BL.c ****     //REG_RCC_CFGR &= 0xFF80FFFF;
- 680:../LIB_AP/Lib/Ap_ST32BL.c **** 
- 681:../LIB_AP/Lib/Ap_ST32BL.c ****     /* Disable all interrupts and clear pending bits  */
- 682:../LIB_AP/Lib/Ap_ST32BL.c ****     //REG_RCC_CIR = 0x009F0000;
- 683:../LIB_AP/Lib/Ap_ST32BL.c **** 
+ 667:../LIB_AP/Lib/Ap_ST32BL.c **** 
+ 668:../LIB_AP/Lib/Ap_ST32BL.c ****     //REG_RCC_CR |= 0x00000001;
+ 669:../LIB_AP/Lib/Ap_ST32BL.c **** 
+ 670:../LIB_AP/Lib/Ap_ST32BL.c ****     /* Reset SW, HPRE, PPRE1, PPRE2, ADCPRE and MCO bits */
+ 671:../LIB_AP/Lib/Ap_ST32BL.c ****     //REG_RCC_CFGR &= 0xF8FF0000;
+ 672:../LIB_AP/Lib/Ap_ST32BL.c **** 
+ 673:../LIB_AP/Lib/Ap_ST32BL.c ****     /* Reset HSEON, CSSON and PLLON bits */
+ 674:../LIB_AP/Lib/Ap_ST32BL.c ****     //REG_RCC_CR &= 0xFEF6FFFF;
+ 675:../LIB_AP/Lib/Ap_ST32BL.c **** 
+ 676:../LIB_AP/Lib/Ap_ST32BL.c ****     /* Reset HSEBYP bit */
+ 677:../LIB_AP/Lib/Ap_ST32BL.c ****     //REG_RCC_CR &= 0xFFFBFFFF;
+ 678:../LIB_AP/Lib/Ap_ST32BL.c **** 
+ 679:../LIB_AP/Lib/Ap_ST32BL.c ****     /* Reset PLLSRC, PLLXTPRE, PLLMUL and USBPRE/OTGFSPRE bits */
+ 680:../LIB_AP/Lib/Ap_ST32BL.c ****     //REG_RCC_CFGR &= 0xFF80FFFF;
+ 681:../LIB_AP/Lib/Ap_ST32BL.c **** 
+ 682:../LIB_AP/Lib/Ap_ST32BL.c ****     /* Disable all interrupts and clear pending bits  */
+ 683:../LIB_AP/Lib/Ap_ST32BL.c ****     //REG_RCC_CIR = 0x009F0000;
  684:../LIB_AP/Lib/Ap_ST32BL.c **** 
  685:../LIB_AP/Lib/Ap_ST32BL.c **** 
- 686:../LIB_AP/Lib/Ap_ST32BL.c **** 	JumpToApp();
- 616              		.loc 1 686 0
- 617 0022 A047     		blx	r4
- 618              	.LVL59:
- 619 0024 10BD     		pop	{r4, pc}
- 620              	.L87:
- 621 0026 00BF     		.align	2
- 622              	.L86:
- 623 0028 04300008 		.word	134230020
- 624 002c 00000000 		.word	Hw_Timer_Delay_ms
- 625 0030 00000000 		.word	PowerOff
- 626 0034 10100240 		.word	1073877008
- 627 0038 0C100240 		.word	1073877004
- 628              		.cfi_endproc
- 629              	.LFE8:
- 631              		.section	.text.Ap_ST32BL_Main,"ax",%progbits
- 632              		.align	1
- 633              		.global	Ap_ST32BL_Main
- 634              		.thumb
- 635              		.thumb_func
- 637              	Ap_ST32BL_Main:
- 638              	.LFB1:
+ 686:../LIB_AP/Lib/Ap_ST32BL.c **** 
+ 687:../LIB_AP/Lib/Ap_ST32BL.c **** 	JumpToApp();
+ 621              		.loc 1 687 0
+ 622 0026 A847     		blx	r5
+ 623              	.LVL60:
+ 624 0028 38BD     		pop	{r3, r4, r5, pc}
+ 625              	.L87:
+ 626 002a 00BF     		.align	2
+ 627              	.L86:
+ 628 002c 04300008 		.word	134230020
+ 629 0030 00000000 		.word	Hw_Timer_Delay_ms
+ 630 0034 00000000 		.word	PowerOff
+ 631 0038 10100240 		.word	1073877008
+ 632 003c 0C100240 		.word	1073877004
+ 633              		.cfi_endproc
+ 634              	.LFE8:
+ 636              		.section	.text.Ap_ST32BL_Main,"ax",%progbits
+ 637              		.align	1
+ 638              		.global	Ap_ST32BL_Main
+ 639              		.thumb
+ 640              		.thumb_func
+ 642              	Ap_ST32BL_Main:
+ 643              	.LFB1:
  138:../LIB_AP/Lib/Ap_ST32BL.c **** {
- 639              		.loc 1 138 0
- 640              		.cfi_startproc
- 641              		@ args = 0, pretend = 0, frame = 304
- 642              		@ frame_needed = 0, uses_anonymous_args = 0
- 643 0000 2DE9F043 		push	{r4, r5, r6, r7, r8, r9, lr}
- 644              	.LCFI7:
- 645              		.cfi_def_cfa_offset 28
- 646              		.cfi_offset 4, -28
- 647              		.cfi_offset 5, -24
- 648              		.cfi_offset 6, -20
- 649              		.cfi_offset 7, -16
- 650              		.cfi_offset 8, -12
- 651              		.cfi_offset 9, -8
- 652              		.cfi_offset 14, -4
- 653 0004 CDB0     		sub	sp, sp, #308
- 654              	.LCFI8:
- 655              		.cfi_def_cfa_offset 336
- 656              	.L113:
+ 644              		.loc 1 138 0
+ 645              		.cfi_startproc
+ 646              		@ args = 0, pretend = 0, frame = 304
+ 647              		@ frame_needed = 0, uses_anonymous_args = 0
+ 648 0000 2DE9F043 		push	{r4, r5, r6, r7, r8, r9, lr}
+ 649              	.LCFI7:
+ 650              		.cfi_def_cfa_offset 28
+ 651              		.cfi_offset 4, -28
+ 652              		.cfi_offset 5, -24
+ 653              		.cfi_offset 6, -20
+ 654              		.cfi_offset 7, -16
+ 655              		.cfi_offset 8, -12
+ 656              		.cfi_offset 9, -8
+ 657              		.cfi_offset 14, -4
+ 658 0004 CDB0     		sub	sp, sp, #308
+ 659              	.LCFI8:
+ 660              		.cfi_def_cfa_offset 336
+ 661              	.L113:
  154:../LIB_AP/Lib/Ap_ST32BL.c **** 		Cmd = Ap_ST32BL_WaitCmd();
- 657              		.loc 1 154 0
- 658 0006 404B     		ldr	r3, .L119
- 659 0008 9847     		blx	r3
- 660              	.LVL60:
+ 662              		.loc 1 154 0
+ 663 0006 404B     		ldr	r3, .L119
+ 664 0008 9847     		blx	r3
+ 665              	.LVL61:
  162:../LIB_AP/Lib/Ap_ST32BL.c **** 		if( Cmd == STM32_CMD_GET_COMMAND )
- 661              		.loc 1 162 0
- 662 000a 18B9     		cbnz	r0, .L91
+ 666              		.loc 1 162 0
+ 667 000a 18B9     		cbnz	r0, .L91
  164:../LIB_AP/Lib/Ap_ST32BL.c **** 			Ap_ST32BL_SendByte(0x00);
- 663              		.loc 1 164 0
- 664 000c 3F4F     		ldr	r7, .L119+4
- 665 000e B847     		blx	r7
- 666              	.LVL61:
+ 668              		.loc 1 164 0
+ 669 000c 3F4F     		ldr	r7, .L119+4
+ 670 000e B847     		blx	r7
+ 671              	.LVL62:
  165:../LIB_AP/Lib/Ap_ST32BL.c **** 			Ap_ST32BL_SendByte(0x22);
- 667              		.loc 1 165 0
- 668 0010 2220     		movs	r0, #34
- 669 0012 07E0     		b	.L114
- 670              	.LVL62:
- 671              	.L91:
+ 672              		.loc 1 165 0
+ 673 0010 2220     		movs	r0, #34
+ 674 0012 07E0     		b	.L114
+ 675              	.LVL63:
+ 676              	.L91:
  170:../LIB_AP/Lib/Ap_ST32BL.c **** 		if( Cmd == STM32_CMD_GET_ID )
- 672              		.loc 1 170 0
- 673 0014 0228     		cmp	r0, #2
- 674 0016 09D1     		bne	.L93
+ 677              		.loc 1 170 0
+ 678 0014 0228     		cmp	r0, #2
+ 679 0016 09D1     		bne	.L93
  172:../LIB_AP/Lib/Ap_ST32BL.c **** 			Ap_ST32BL_SendByte(0x01);
- 675              		.loc 1 172 0
- 676 0018 0120     		movs	r0, #1
- 677              	.LVL63:
- 678 001a 3C4F     		ldr	r7, .L119+4
- 679 001c B847     		blx	r7
- 680              	.LVL64:
+ 680              		.loc 1 172 0
+ 681 0018 0120     		movs	r0, #1
+ 682              	.LVL64:
+ 683 001a 3C4F     		ldr	r7, .L119+4
+ 684 001c B847     		blx	r7
+ 685              	.LVL65:
  173:../LIB_AP/Lib/Ap_ST32BL.c **** 			Ap_ST32BL_SendByte(0x04);
- 681              		.loc 1 173 0
- 682 001e 0420     		movs	r0, #4
- 683 0020 B847     		blx	r7
- 684              	.LVL65:
- 174:../LIB_AP/Lib/Ap_ST32BL.c **** 			Ap_ST32BL_SendByte(0x10);
- 685              		.loc 1 174 0
- 686 0022 1020     		movs	r0, #16
- 687              	.L114:
- 688 0024 B847     		blx	r7
+ 686              		.loc 1 173 0
+ 687 001e 0420     		movs	r0, #4
+ 688 0020 B847     		blx	r7
  689              	.LVL66:
+ 174:../LIB_AP/Lib/Ap_ST32BL.c **** 			Ap_ST32BL_SendByte(0x10);
+ 690              		.loc 1 174 0
+ 691 0022 1020     		movs	r0, #16
+ 692              	.L114:
+ 693 0024 B847     		blx	r7
+ 694              	.LVL67:
  175:../LIB_AP/Lib/Ap_ST32BL.c **** 			Ap_ST32BL_SendByte(STM32_COMM_ACK);			
- 690              		.loc 1 175 0
- 691 0026 7920     		movs	r0, #121
- 692 0028 B847     		blx	r7
- 693              	.LVL67:
- 694 002a ECE7     		b	.L113
- 695              	.LVL68:
- 696              	.L93:
+ 695              		.loc 1 175 0
+ 696 0026 7920     		movs	r0, #121
+ 697 0028 B847     		blx	r7
+ 698              	.LVL68:
+ 699 002a ECE7     		b	.L113
+ 700              	.LVL69:
+ 701              	.L93:
  179:../LIB_AP/Lib/Ap_ST32BL.c **** 		if( Cmd == STM32_CMD_ERASE_FLASH )
- 697              		.loc 1 179 0
- 698 002c 4328     		cmp	r0, #67
- 699 002e 0CD1     		bne	.L94
+ 702              		.loc 1 179 0
+ 703 002c 4328     		cmp	r0, #67
+ 704 002e 0CD1     		bne	.L94
  181:../LIB_AP/Lib/Ap_ST32BL.c **** 			Resp[0] = Ap_ST32BL_ReceiveByte();
- 700              		.loc 1 181 0
- 701 0030 374E     		ldr	r6, .L119+8
- 702 0032 B047     		blx	r6
- 703              	.LVL69:
- 704 0034 8DF80400 		strb	r0, [sp, #4]
- 182:../LIB_AP/Lib/Ap_ST32BL.c **** 			Resp[1] = Ap_ST32BL_ReceiveByte();
- 705              		.loc 1 182 0
- 706 0038 B047     		blx	r6
- 707              	.LVL70:
- 185:../LIB_AP/Lib/Ap_ST32BL.c **** 			if( Ap_ST32BL_EraseFlash() == TRUE )	Ap_ST32BL_SendByte(STM32_COMM_ACK);
- 708              		.loc 1 185 0
- 709 003a 364A     		ldr	r2, .L119+12
+ 705              		.loc 1 181 0
+ 706 0030 374E     		ldr	r6, .L119+8
+ 707 0032 B047     		blx	r6
+ 708              	.LVL70:
+ 709 0034 8DF80400 		strb	r0, [sp, #4]
  182:../LIB_AP/Lib/Ap_ST32BL.c **** 			Resp[1] = Ap_ST32BL_ReceiveByte();
  710              		.loc 1 182 0
- 711 003c 8DF80500 		strb	r0, [sp, #5]
+ 711 0038 B047     		blx	r6
+ 712              	.LVL71:
  185:../LIB_AP/Lib/Ap_ST32BL.c **** 			if( Ap_ST32BL_EraseFlash() == TRUE )	Ap_ST32BL_SendByte(STM32_COMM_ACK);
- 712              		.loc 1 185 0
- 713 0040 9047     		blx	r2
- 714              	.LVL71:
- 715              	.L117:
- 716 0042 0128     		cmp	r0, #1
- 717 0044 3AD1     		bne	.L95
+ 713              		.loc 1 185 0
+ 714 003a 364A     		ldr	r2, .L119+12
+ 182:../LIB_AP/Lib/Ap_ST32BL.c **** 			Resp[1] = Ap_ST32BL_ReceiveByte();
+ 715              		.loc 1 182 0
+ 716 003c 8DF80500 		strb	r0, [sp, #5]
  185:../LIB_AP/Lib/Ap_ST32BL.c **** 			if( Ap_ST32BL_EraseFlash() == TRUE )	Ap_ST32BL_SendByte(STM32_COMM_ACK);
- 718              		.loc 1 185 0 is_stmt 0 discriminator 1
- 719 0046 7920     		movs	r0, #121
- 720 0048 39E0     		b	.L115
- 721              	.LVL72:
- 722              	.L94:
+ 717              		.loc 1 185 0
+ 718 0040 9047     		blx	r2
+ 719              	.LVL72:
+ 720              	.L117:
+ 721 0042 0128     		cmp	r0, #1
+ 722 0044 3AD1     		bne	.L95
+ 185:../LIB_AP/Lib/Ap_ST32BL.c **** 			if( Ap_ST32BL_EraseFlash() == TRUE )	Ap_ST32BL_SendByte(STM32_COMM_ACK);
+ 723              		.loc 1 185 0 is_stmt 0 discriminator 1
+ 724 0046 7920     		movs	r0, #121
+ 725 0048 39E0     		b	.L115
+ 726              	.LVL73:
+ 727              	.L94:
  196:../LIB_AP/Lib/Ap_ST32BL.c **** 		if( Cmd == STM32_CMD_WRITE_FLASH )
- 723              		.loc 1 196 0 is_stmt 1
- 724 004a 3128     		cmp	r0, #49
- 725 004c 3CD1     		bne	.L97
- 726 004e 0025     		movs	r5, #0
- 727 0050 2E46     		mov	r6, r5
- 728              	.LVL73:
- 729              	.L98:
- 204:../LIB_AP/Lib/Ap_ST32BL.c **** 				Resp[i] = Ap_ST32BL_ReceiveByte();
- 730              		.loc 1 204 0 discriminator 2
- 731 0052 2F4F     		ldr	r7, .L119+8
- 732 0054 B847     		blx	r7
+ 728              		.loc 1 196 0 is_stmt 1
+ 729 004a 3128     		cmp	r0, #49
+ 730 004c 3CD1     		bne	.L97
+ 731 004e 0025     		movs	r5, #0
+ 732 0050 2E46     		mov	r6, r5
  733              	.LVL74:
- 734 0056 01AC     		add	r4, sp, #4
- 735 0058 3055     		strb	r0, [r6, r4]
+ 734              	.L98:
+ 204:../LIB_AP/Lib/Ap_ST32BL.c **** 				Resp[i] = Ap_ST32BL_ReceiveByte();
+ 735              		.loc 1 204 0 discriminator 2
+ 736 0052 2F4F     		ldr	r7, .L119+8
+ 737 0054 B847     		blx	r7
+ 738              	.LVL75:
+ 739 0056 01AC     		add	r4, sp, #4
+ 740 0058 3055     		strb	r0, [r6, r4]
  202:../LIB_AP/Lib/Ap_ST32BL.c **** 			for( i=0; i<4; i++ )
- 736              		.loc 1 202 0 discriminator 2
- 737 005a 0136     		adds	r6, r6, #1
- 738 005c 042E     		cmp	r6, #4
+ 741              		.loc 1 202 0 discriminator 2
+ 742 005a 0136     		adds	r6, r6, #1
+ 743 005c 042E     		cmp	r6, #4
  205:../LIB_AP/Lib/Ap_ST32BL.c **** 				CheckSumCalc ^= Resp[i];	
- 739              		.loc 1 205 0 discriminator 2
- 740 005e 85EA0005 		eor	r5, r5, r0
- 741              	.LVL75:
- 202:../LIB_AP/Lib/Ap_ST32BL.c **** 			for( i=0; i<4; i++ )
- 742              		.loc 1 202 0 discriminator 2
- 743 0062 F6D1     		bne	.L98
- 207:../LIB_AP/Lib/Ap_ST32BL.c **** 			CheckSum = Ap_ST32BL_ReceiveByte();
- 744              		.loc 1 207 0
- 745 0064 B847     		blx	r7
+ 744              		.loc 1 205 0 discriminator 2
+ 745 005e 85EA0005 		eor	r5, r5, r0
  746              	.LVL76:
+ 202:../LIB_AP/Lib/Ap_ST32BL.c **** 			for( i=0; i<4; i++ )
+ 747              		.loc 1 202 0 discriminator 2
+ 748 0062 F6D1     		bne	.L98
+ 207:../LIB_AP/Lib/Ap_ST32BL.c **** 			CheckSum = Ap_ST32BL_ReceiveByte();
+ 749              		.loc 1 207 0
+ 750 0064 B847     		blx	r7
+ 751              	.LVL77:
  209:../LIB_AP/Lib/Ap_ST32BL.c **** 			Address  = Resp[0] << 24;
- 747              		.loc 1 209 0
- 748 0066 94F80090 		ldrb	r9, [r4, #0]	@ zero_extendqisi2
+ 752              		.loc 1 209 0
+ 753 0066 94F80090 		ldrb	r9, [r4, #0]	@ zero_extendqisi2
  210:../LIB_AP/Lib/Ap_ST32BL.c **** 			Address |= Resp[1] << 16;
- 749              		.loc 1 210 0
- 750 006a 6378     		ldrb	r3, [r4, #1]	@ zero_extendqisi2
+ 754              		.loc 1 210 0
+ 755 006a 6378     		ldrb	r3, [r4, #1]	@ zero_extendqisi2
  209:../LIB_AP/Lib/Ap_ST32BL.c **** 			Address  = Resp[0] << 24;
- 751              		.loc 1 209 0
- 752 006c 4FEA0962 		lsl	r2, r9, #24
+ 756              		.loc 1 209 0
+ 757 006c 4FEA0962 		lsl	r2, r9, #24
  211:../LIB_AP/Lib/Ap_ST32BL.c **** 			Address |= Resp[2] <<  8;
- 753              		.loc 1 211 0
- 754 0070 A778     		ldrb	r7, [r4, #2]	@ zero_extendqisi2
+ 758              		.loc 1 211 0
+ 759 0070 A778     		ldrb	r7, [r4, #2]	@ zero_extendqisi2
  210:../LIB_AP/Lib/Ap_ST32BL.c **** 			Address |= Resp[1] << 16;
- 755              		.loc 1 210 0
- 756 0072 42EA0341 		orr	r1, r2, r3, lsl #16
+ 760              		.loc 1 210 0
+ 761 0072 42EA0341 		orr	r1, r2, r3, lsl #16
  212:../LIB_AP/Lib/Ap_ST32BL.c **** 			Address |= Resp[3] <<  0;
- 757              		.loc 1 212 0
- 758 0076 E478     		ldrb	r4, [r4, #3]	@ zero_extendqisi2
- 759              	.LVL77:
+ 762              		.loc 1 212 0
+ 763 0076 E478     		ldrb	r4, [r4, #3]	@ zero_extendqisi2
+ 764              	.LVL78:
  211:../LIB_AP/Lib/Ap_ST32BL.c **** 			Address |= Resp[2] <<  8;
- 760              		.loc 1 211 0
- 761 0078 41EA0726 		orr	r6, r1, r7, lsl #8
- 762              	.LVL78:
- 220:../LIB_AP/Lib/Ap_ST32BL.c **** 			if( CheckSum == CheckSumCalc )
- 763              		.loc 1 220 0
- 764 007c A842     		cmp	r0, r5
- 212:../LIB_AP/Lib/Ap_ST32BL.c **** 			Address |= Resp[3] <<  0;
- 765              		.loc 1 212 0
- 766 007e 46EA0409 		orr	r9, r6, r4
+ 765              		.loc 1 211 0
+ 766 0078 41EA0726 		orr	r6, r1, r7, lsl #8
  767              	.LVL79:
- 768 0082 224D     		ldr	r5, .L119+4
- 769              	.LVL80:
  220:../LIB_AP/Lib/Ap_ST32BL.c **** 			if( CheckSum == CheckSumCalc )
- 770              		.loc 1 220 0
- 771 0084 1ED1     		bne	.L99
- 222:../LIB_AP/Lib/Ap_ST32BL.c **** 				Ap_ST32BL_SendByte(STM32_COMM_ACK);
- 772              		.loc 1 222 0
- 773 0086 7920     		movs	r0, #121
+ 768              		.loc 1 220 0
+ 769 007c A842     		cmp	r0, r5
+ 212:../LIB_AP/Lib/Ap_ST32BL.c **** 			Address |= Resp[3] <<  0;
+ 770              		.loc 1 212 0
+ 771 007e 46EA0409 		orr	r9, r6, r4
+ 772              	.LVL80:
+ 773 0082 224D     		ldr	r5, .L119+4
  774              	.LVL81:
- 775              	.L118:
+ 220:../LIB_AP/Lib/Ap_ST32BL.c **** 			if( CheckSum == CheckSumCalc )
+ 775              		.loc 1 220 0
+ 776 0084 1ED1     		bne	.L99
+ 222:../LIB_AP/Lib/Ap_ST32BL.c **** 				Ap_ST32BL_SendByte(STM32_COMM_ACK);
+ 777              		.loc 1 222 0
+ 778 0086 7920     		movs	r0, #121
+ 779              	.LVL82:
+ 780              	.L118:
  229:../LIB_AP/Lib/Ap_ST32BL.c **** 				Ap_ST32BL_SendByte(STM32_COMM_NACK);	
- 776              		.loc 1 229 0
- 777 0088 A847     		blx	r5
- 778              	.LVL82:
+ 781              		.loc 1 229 0
+ 782 0088 A847     		blx	r5
+ 783              	.LVL83:
  239:../LIB_AP/Lib/Ap_ST32BL.c **** 			Length  = Ap_ST32BL_ReceiveByte();
- 779              		.loc 1 239 0
- 780 008a 2148     		ldr	r0, .L119+8
- 781 008c 8047     		blx	r0
- 782              	.LVL83:
- 247:../LIB_AP/Lib/Ap_ST32BL.c **** 			for( i=0; i<Length; i++ )
- 783              		.loc 1 247 0
- 784 008e 0025     		movs	r5, #0
- 239:../LIB_AP/Lib/Ap_ST32BL.c **** 			Length  = Ap_ST32BL_ReceiveByte();
- 785              		.loc 1 239 0
- 786 0090 0446     		mov	r4, r0
+ 784              		.loc 1 239 0
+ 785 008a 2148     		ldr	r0, .L119+8
+ 786 008c 8047     		blx	r0
  787              	.LVL84:
+ 247:../LIB_AP/Lib/Ap_ST32BL.c **** 			for( i=0; i<Length; i++ )
+ 788              		.loc 1 247 0
+ 789 008e 0025     		movs	r5, #0
+ 239:../LIB_AP/Lib/Ap_ST32BL.c **** 			Length  = Ap_ST32BL_ReceiveByte();
+ 790              		.loc 1 239 0
+ 791 0090 0446     		mov	r4, r0
+ 792              	.LVL85:
  241:../LIB_AP/Lib/Ap_ST32BL.c **** 			Length++;
- 788              		.loc 1 241 0
- 789 0092 461C     		adds	r6, r0, #1
- 790              	.LVL85:
- 791              	.L101:
- 249:../LIB_AP/Lib/Ap_ST32BL.c **** 				Resp[i] = Ap_ST32BL_ReceiveByte();
- 792              		.loc 1 249 0 discriminator 2
- 793 0094 DFF87880 		ldr	r8, .L119+8
- 794 0098 C047     		blx	r8
+ 793              		.loc 1 241 0
+ 794 0092 461C     		adds	r6, r0, #1
  795              	.LVL86:
- 796 009a 01AF     		add	r7, sp, #4
- 797 009c E855     		strb	r0, [r5, r7]
+ 796              	.L101:
+ 249:../LIB_AP/Lib/Ap_ST32BL.c **** 				Resp[i] = Ap_ST32BL_ReceiveByte();
+ 797              		.loc 1 249 0 discriminator 2
+ 798 0094 DFF87880 		ldr	r8, .L119+8
+ 799 0098 C047     		blx	r8
+ 800              	.LVL87:
+ 801 009a 01AF     		add	r7, sp, #4
+ 802 009c E855     		strb	r0, [r5, r7]
  247:../LIB_AP/Lib/Ap_ST32BL.c **** 			for( i=0; i<Length; i++ )
- 798              		.loc 1 247 0 discriminator 2
- 799 009e 0135     		adds	r5, r5, #1
+ 803              		.loc 1 247 0 discriminator 2
+ 804 009e 0135     		adds	r5, r5, #1
  250:../LIB_AP/Lib/Ap_ST32BL.c **** 				CheckSumCalc ^= Resp[i];					
- 800              		.loc 1 250 0 discriminator 2
- 801 00a0 4440     		eors	r4, r4, r0
- 247:../LIB_AP/Lib/Ap_ST32BL.c **** 			for( i=0; i<Length; i++ )
- 802              		.loc 1 247 0 discriminator 2
- 803 00a2 B542     		cmp	r5, r6
- 250:../LIB_AP/Lib/Ap_ST32BL.c **** 				CheckSumCalc ^= Resp[i];					
- 804              		.loc 1 250 0 discriminator 2
- 805 00a4 E4B2     		uxtb	r4, r4
- 806              	.LVL87:
+ 805              		.loc 1 250 0 discriminator 2
+ 806 00a0 4440     		eors	r4, r4, r0
  247:../LIB_AP/Lib/Ap_ST32BL.c **** 			for( i=0; i<Length; i++ )
  807              		.loc 1 247 0 discriminator 2
- 808 00a6 F5D3     		bcc	.L101
- 252:../LIB_AP/Lib/Ap_ST32BL.c **** 			CheckSum = Ap_ST32BL_ReceiveByte();
- 809              		.loc 1 252 0
- 810 00a8 C047     		blx	r8
+ 808 00a2 B542     		cmp	r5, r6
+ 250:../LIB_AP/Lib/Ap_ST32BL.c **** 				CheckSumCalc ^= Resp[i];					
+ 809              		.loc 1 250 0 discriminator 2
+ 810 00a4 E4B2     		uxtb	r4, r4
  811              	.LVL88:
- 263:../LIB_AP/Lib/Ap_ST32BL.c **** 			Ret = Ap_ST32BL_WriteFlash( Address + HW_ST32BL_FLASH_ADDRESS_OFFSET, Resp, Length );
- 812              		.loc 1 263 0
- 813 00aa 3946     		mov	r1, r7
+ 247:../LIB_AP/Lib/Ap_ST32BL.c **** 			for( i=0; i<Length; i++ )
+ 812              		.loc 1 247 0 discriminator 2
+ 813 00a6 F5D3     		bcc	.L101
  252:../LIB_AP/Lib/Ap_ST32BL.c **** 			CheckSum = Ap_ST32BL_ReceiveByte();
  814              		.loc 1 252 0
- 815 00ac 0546     		mov	r5, r0
+ 815 00a8 C047     		blx	r8
  816              	.LVL89:
  263:../LIB_AP/Lib/Ap_ST32BL.c **** 			Ret = Ap_ST32BL_WriteFlash( Address + HW_ST32BL_FLASH_ADDRESS_OFFSET, Resp, Length );
  817              		.loc 1 263 0
- 818 00ae 3246     		mov	r2, r6
- 819 00b0 09F54050 		add	r0, r9, #12288
- 820              	.LVL90:
- 821 00b4 184B     		ldr	r3, .L119+16
- 822 00b6 9847     		blx	r3
- 823              	.LVL91:
+ 818 00aa 3946     		mov	r1, r7
+ 252:../LIB_AP/Lib/Ap_ST32BL.c **** 			CheckSum = Ap_ST32BL_ReceiveByte();
+ 819              		.loc 1 252 0
+ 820 00ac 0546     		mov	r5, r0
+ 821              	.LVL90:
+ 263:../LIB_AP/Lib/Ap_ST32BL.c **** 			Ret = Ap_ST32BL_WriteFlash( Address + HW_ST32BL_FLASH_ADDRESS_OFFSET, Resp, Length );
+ 822              		.loc 1 263 0
+ 823 00ae 3246     		mov	r2, r6
+ 824 00b0 09F54050 		add	r0, r9, #12288
+ 825              	.LVL91:
+ 826 00b4 184B     		ldr	r3, .L119+16
+ 827 00b6 9847     		blx	r3
+ 828              	.LVL92:
  266:../LIB_AP/Lib/Ap_ST32BL.c **** 			if( CheckSum == CheckSumCalc && Ret == TRUE ) 	
- 824              		.loc 1 266 0
- 825 00b8 A542     		cmp	r5, r4
- 826 00ba C2D0     		beq	.L117
- 827              	.LVL92:
- 828              	.L95:
+ 829              		.loc 1 266 0
+ 830 00b8 A542     		cmp	r5, r4
+ 831 00ba C2D0     		beq	.L117
+ 832              	.LVL93:
+ 833              	.L95:
  186:../LIB_AP/Lib/Ap_ST32BL.c **** 			else									Ap_ST32BL_SendByte(STM32_COMM_NACK);
- 829              		.loc 1 186 0
- 830 00bc 1F20     		movs	r0, #31
- 831              	.L115:
- 832 00be 1349     		ldr	r1, .L119+4
- 833 00c0 8847     		blx	r1
- 834              	.LVL93:
- 835 00c2 A0E7     		b	.L113
- 836              	.LVL94:
- 837              	.L99:
+ 834              		.loc 1 186 0
+ 835 00bc 1F20     		movs	r0, #31
+ 836              	.L115:
+ 837 00be 1349     		ldr	r1, .L119+4
+ 838 00c0 8847     		blx	r1
+ 839              	.LVL94:
+ 840 00c2 A0E7     		b	.L113
+ 841              	.LVL95:
+ 842              	.L99:
  229:../LIB_AP/Lib/Ap_ST32BL.c **** 				Ap_ST32BL_SendByte(STM32_COMM_NACK);	
- 838              		.loc 1 229 0
- 839 00c4 1F20     		movs	r0, #31
- 840              	.LVL95:
- 841 00c6 DFE7     		b	.L118
- 842              	.LVL96:
- 843              	.L97:
+ 843              		.loc 1 229 0
+ 844 00c4 1F20     		movs	r0, #31
+ 845              	.LVL96:
+ 846 00c6 DFE7     		b	.L118
+ 847              	.LVL97:
+ 848              	.L97:
  280:../LIB_AP/Lib/Ap_ST32BL.c **** 		if( Cmd == STM32_CMD_GO )
- 844              		.loc 1 280 0
- 845 00c8 2128     		cmp	r0, #33
- 846 00ca 9CD1     		bne	.L113
- 847 00cc 0025     		movs	r5, #0
- 848              	.LVL97:
- 849              	.L104:
- 287:../LIB_AP/Lib/Ap_ST32BL.c **** 				Resp[i] = Ap_ST32BL_ReceiveByte();
- 850              		.loc 1 287 0 discriminator 2
- 851 00ce 104E     		ldr	r6, .L119+8
- 852 00d0 B047     		blx	r6
+ 849              		.loc 1 280 0
+ 850 00c8 2128     		cmp	r0, #33
+ 851 00ca 9CD1     		bne	.L113
+ 852 00cc 0025     		movs	r5, #0
  853              	.LVL98:
- 854 00d2 01AC     		add	r4, sp, #4
- 855 00d4 6055     		strb	r0, [r4, r5]
- 285:../LIB_AP/Lib/Ap_ST32BL.c **** 			for( i=0; i<4; i++ )
- 856              		.loc 1 285 0 discriminator 2
- 857 00d6 0135     		adds	r5, r5, #1
+ 854              	.L104:
+ 287:../LIB_AP/Lib/Ap_ST32BL.c **** 				Resp[i] = Ap_ST32BL_ReceiveByte();
+ 855              		.loc 1 287 0 discriminator 2
+ 856 00ce 104E     		ldr	r6, .L119+8
+ 857 00d0 B047     		blx	r6
  858              	.LVL99:
- 859 00d8 042D     		cmp	r5, #4
- 860 00da F8D1     		bne	.L104
- 290:../LIB_AP/Lib/Ap_ST32BL.c **** 			CheckSum = Ap_ST32BL_ReceiveByte();
- 861              		.loc 1 290 0
- 862 00dc B047     		blx	r6
+ 859 00d2 01AC     		add	r4, sp, #4
+ 860 00d4 6055     		strb	r0, [r4, r5]
+ 285:../LIB_AP/Lib/Ap_ST32BL.c **** 			for( i=0; i<4; i++ )
+ 861              		.loc 1 285 0 discriminator 2
+ 862 00d6 0135     		adds	r5, r5, #1
  863              	.LVL100:
+ 864 00d8 042D     		cmp	r5, #4
+ 865 00da F8D1     		bne	.L104
+ 290:../LIB_AP/Lib/Ap_ST32BL.c **** 			CheckSum = Ap_ST32BL_ReceiveByte();
+ 866              		.loc 1 290 0
+ 867 00dc B047     		blx	r6
+ 868              	.LVL101:
  292:../LIB_AP/Lib/Ap_ST32BL.c **** 			Address  = Resp[0] << 24;
- 864              		.loc 1 292 0
- 865 00de 2278     		ldrb	r2, [r4, #0]	@ zero_extendqisi2
+ 869              		.loc 1 292 0
+ 870 00de 2278     		ldrb	r2, [r4, #0]	@ zero_extendqisi2
  293:../LIB_AP/Lib/Ap_ST32BL.c **** 			Address |= Resp[1] << 16;
- 866              		.loc 1 293 0
- 867 00e0 6078     		ldrb	r0, [r4, #1]	@ zero_extendqisi2
+ 871              		.loc 1 293 0
+ 872 00e0 6078     		ldrb	r0, [r4, #1]	@ zero_extendqisi2
  294:../LIB_AP/Lib/Ap_ST32BL.c **** 			Address |= Resp[2] <<  8;
- 868              		.loc 1 294 0
- 869 00e2 A378     		ldrb	r3, [r4, #2]	@ zero_extendqisi2
+ 873              		.loc 1 294 0
+ 874 00e2 A378     		ldrb	r3, [r4, #2]	@ zero_extendqisi2
  292:../LIB_AP/Lib/Ap_ST32BL.c **** 			Address  = Resp[0] << 24;
- 870              		.loc 1 292 0
- 871 00e4 1706     		lsls	r7, r2, #24
+ 875              		.loc 1 292 0
+ 876 00e4 1706     		lsls	r7, r2, #24
  293:../LIB_AP/Lib/Ap_ST32BL.c **** 			Address |= Resp[1] << 16;
- 872              		.loc 1 293 0
- 873 00e6 47EA0041 		orr	r1, r7, r0, lsl #16
+ 877              		.loc 1 293 0
+ 878 00e6 47EA0041 		orr	r1, r7, r0, lsl #16
  295:../LIB_AP/Lib/Ap_ST32BL.c **** 			Address |= Resp[3] <<  0;	
- 874              		.loc 1 295 0
- 875 00ea E478     		ldrb	r4, [r4, #3]	@ zero_extendqisi2
- 876              	.LVL101:
+ 879              		.loc 1 295 0
+ 880 00ea E478     		ldrb	r4, [r4, #3]	@ zero_extendqisi2
+ 881              	.LVL102:
  294:../LIB_AP/Lib/Ap_ST32BL.c **** 			Address |= Resp[2] <<  8;
- 877              		.loc 1 294 0
- 878 00ec 41EA0326 		orr	r6, r1, r3, lsl #8
- 879              	.LVL102:
- 298:../LIB_AP/Lib/Ap_ST32BL.c **** 			Ap_ST32BL_SendByte(STM32_COMM_ACK);	
- 880              		.loc 1 298 0
- 881 00f0 7920     		movs	r0, #121
- 882 00f2 064A     		ldr	r2, .L119+4
- 883 00f4 9047     		blx	r2
+ 882              		.loc 1 294 0
+ 883 00ec 41EA0326 		orr	r6, r1, r3, lsl #8
  884              	.LVL103:
+ 298:../LIB_AP/Lib/Ap_ST32BL.c **** 			Ap_ST32BL_SendByte(STM32_COMM_ACK);	
+ 885              		.loc 1 298 0
+ 886 00f0 7920     		movs	r0, #121
+ 887 00f2 064A     		ldr	r2, .L119+4
+ 888 00f4 9047     		blx	r2
+ 889              	.LVL104:
  295:../LIB_AP/Lib/Ap_ST32BL.c **** 			Address |= Resp[3] <<  0;	
- 885              		.loc 1 295 0
- 886 00f6 46EA0405 		orr	r5, r6, r4
- 887              	.LVL104:
- 300:../LIB_AP/Lib/Ap_ST32BL.c **** 			Hw_Timer_Delay_ms(100);
- 888              		.loc 1 300 0
- 889 00fa 6420     		movs	r0, #100
- 890 00fc 074F     		ldr	r7, .L119+20
- 891 00fe B847     		blx	r7
+ 890              		.loc 1 295 0
+ 891 00f6 46EA0405 		orr	r5, r6, r4
  892              	.LVL105:
- 304:../LIB_AP/Lib/Ap_ST32BL.c **** 			Ap_ST32BL_JumpToApp( Address );
- 893              		.loc 1 304 0
- 894 0100 2846     		mov	r0, r5
- 895 0102 0749     		ldr	r1, .L119+24
- 896 0104 8847     		blx	r1
+ 300:../LIB_AP/Lib/Ap_ST32BL.c **** 			Hw_Timer_Delay_ms(100);
+ 893              		.loc 1 300 0
+ 894 00fa 6420     		movs	r0, #100
+ 895 00fc 074F     		ldr	r7, .L119+20
+ 896 00fe B847     		blx	r7
  897              	.LVL106:
- 898 0106 7EE7     		b	.L113
- 899              	.L120:
- 900              		.align	2
- 901              	.L119:
- 902 0108 00000000 		.word	Ap_ST32BL_WaitCmd
- 903 010c 00000000 		.word	Ap_ST32BL_SendByte
- 904 0110 00000000 		.word	Ap_ST32BL_ReceiveByte
- 905 0114 00000000 		.word	Ap_ST32BL_EraseFlash
- 906 0118 00000000 		.word	Ap_ST32BL_WriteFlash
- 907 011c 00000000 		.word	Hw_Timer_Delay_ms
- 908 0120 00000000 		.word	Ap_ST32BL_JumpToApp
- 909              		.cfi_endproc
- 910              	.LFE1:
- 912              		.comm	Ap_ST32BL_EraseSectorFlag,128,1
- 913              		.comm	Ap_ST32BL_UartPort,1,1
- 914              		.comm	Ap_ST32BL_RunBoot,1,1
- 915              		.text
- 916              	.Letext0:
- 917              		.file 2 "../LIB_HW/Core/Hw_Define.h"
- 918              		.file 3 "../LIB_AP/Lib/Ap_ST32BL.h"
- 919              		.file 4 "../LIB_HW/Driver/LIB_ST32/stm32f10x_flash.h"
+ 304:../LIB_AP/Lib/Ap_ST32BL.c **** 			Ap_ST32BL_JumpToApp( Address );
+ 898              		.loc 1 304 0
+ 899 0100 2846     		mov	r0, r5
+ 900 0102 0749     		ldr	r1, .L119+24
+ 901 0104 8847     		blx	r1
+ 902              	.LVL107:
+ 903 0106 7EE7     		b	.L113
+ 904              	.L120:
+ 905              		.align	2
+ 906              	.L119:
+ 907 0108 00000000 		.word	Ap_ST32BL_WaitCmd
+ 908 010c 00000000 		.word	Ap_ST32BL_SendByte
+ 909 0110 00000000 		.word	Ap_ST32BL_ReceiveByte
+ 910 0114 00000000 		.word	Ap_ST32BL_EraseFlash
+ 911 0118 00000000 		.word	Ap_ST32BL_WriteFlash
+ 912 011c 00000000 		.word	Hw_Timer_Delay_ms
+ 913 0120 00000000 		.word	Ap_ST32BL_JumpToApp
+ 914              		.cfi_endproc
+ 915              	.LFE1:
+ 917              		.comm	Ap_ST32BL_EraseSectorFlag,128,1
+ 918              		.comm	Ap_ST32BL_UartPort,1,1
+ 919              		.comm	Ap_ST32BL_RunBoot,1,1
+ 920              		.text
+ 921              	.Letext0:
+ 922              		.file 2 "../LIB_HW/Core/Hw_Define.h"
+ 923              		.file 3 "../LIB_AP/Lib/Ap_ST32BL.h"
+ 924              		.file 4 "../LIB_HW/Driver/LIB_ST32/stm32f10x_flash.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 Ap_ST32BL.c
-/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccbFLUWO.s:19     .text.Ap_ST32BL_Init:0000000000000000 $t
-/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccbFLUWO.s:24     .text.Ap_ST32BL_Init:0000000000000000 Ap_ST32BL_Init
-/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccbFLUWO.s:105    .text.Ap_ST32BL_Init:0000000000000064 $d
+/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccna9Das.s:19     .text.Ap_ST32BL_Init:0000000000000000 $t
+/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccna9Das.s:24     .text.Ap_ST32BL_Init:0000000000000000 Ap_ST32BL_Init
+/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccna9Das.s:105    .text.Ap_ST32BL_Init:0000000000000064 $d
                             *COM*:0000000000000001 Ap_ST32BL_RunBoot
                             *COM*:0000000000000080 Ap_ST32BL_EraseSectorFlag
                             *COM*:0000000000000001 Ap_ST32BL_UartPort
-/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccbFLUWO.s:115    .text.Ap_ST32BL_SendByte:0000000000000000 $t
-/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccbFLUWO.s:120    .text.Ap_ST32BL_SendByte:0000000000000000 Ap_ST32BL_SendByte
-/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccbFLUWO.s:146    .text.Ap_ST32BL_SendByte:0000000000000010 $d
-/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccbFLUWO.s:152    .text.Ap_ST32BL_ReceiveByte:0000000000000000 $t
-/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccbFLUWO.s:157    .text.Ap_ST32BL_ReceiveByte:0000000000000000 Ap_ST32BL_ReceiveByte
-/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccbFLUWO.s:179    .text.Ap_ST32BL_ReceiveByte:000000000000000c $d
-/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccbFLUWO.s:185    .text.Ap_ST32BL_WaitCmd:0000000000000000 $t
-/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccbFLUWO.s:190    .text.Ap_ST32BL_WaitCmd:0000000000000000 Ap_ST32BL_WaitCmd
-/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccbFLUWO.s:268    .text.Ap_ST32BL_WaitCmd:0000000000000050 $d
-/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccbFLUWO.s:274    .text.Ap_ST32BL_EraseFlash:0000000000000000 $t
-/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccbFLUWO.s:279    .text.Ap_ST32BL_EraseFlash:0000000000000000 Ap_ST32BL_EraseFlash
-/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccbFLUWO.s:354    .text.Ap_ST32BL_EraseFlash:0000000000000040 $d
-/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccbFLUWO.s:364    .text.Ap_ST32BL_CheckFlashSector:0000000000000000 $t
-/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccbFLUWO.s:369    .text.Ap_ST32BL_CheckFlashSector:0000000000000000 Ap_ST32BL_CheckFlashSector
-/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccbFLUWO.s:447    .text.Ap_ST32BL_CheckFlashSector:0000000000000048 $d
-/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccbFLUWO.s:455    .text.Ap_ST32BL_WriteFlash:0000000000000000 $t
-/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccbFLUWO.s:460    .text.Ap_ST32BL_WriteFlash:0000000000000000 Ap_ST32BL_WriteFlash
-/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccbFLUWO.s:559    .text.Ap_ST32BL_WriteFlash:0000000000000058 $d
-/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccbFLUWO.s:565    .text.Ap_ST32BL_JumpToApp:0000000000000000 $t
-/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccbFLUWO.s:570    .text.Ap_ST32BL_JumpToApp:0000000000000000 Ap_ST32BL_JumpToApp
-/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccbFLUWO.s:623    .text.Ap_ST32BL_JumpToApp:0000000000000028 $d
-/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccbFLUWO.s:632    .text.Ap_ST32BL_Main:0000000000000000 $t
-/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccbFLUWO.s:637    .text.Ap_ST32BL_Main:0000000000000000 Ap_ST32BL_Main
-/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccbFLUWO.s:902    .text.Ap_ST32BL_Main:0000000000000108 $d
+/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccna9Das.s:115    .text.Ap_ST32BL_SendByte:0000000000000000 $t
+/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccna9Das.s:120    .text.Ap_ST32BL_SendByte:0000000000000000 Ap_ST32BL_SendByte
+/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccna9Das.s:146    .text.Ap_ST32BL_SendByte:0000000000000010 $d
+/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccna9Das.s:152    .text.Ap_ST32BL_ReceiveByte:0000000000000000 $t
+/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccna9Das.s:157    .text.Ap_ST32BL_ReceiveByte:0000000000000000 Ap_ST32BL_ReceiveByte
+/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccna9Das.s:179    .text.Ap_ST32BL_ReceiveByte:000000000000000c $d
+/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccna9Das.s:185    .text.Ap_ST32BL_WaitCmd:0000000000000000 $t
+/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccna9Das.s:190    .text.Ap_ST32BL_WaitCmd:0000000000000000 Ap_ST32BL_WaitCmd
+/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccna9Das.s:268    .text.Ap_ST32BL_WaitCmd:0000000000000050 $d
+/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccna9Das.s:274    .text.Ap_ST32BL_EraseFlash:0000000000000000 $t
+/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccna9Das.s:279    .text.Ap_ST32BL_EraseFlash:0000000000000000 Ap_ST32BL_EraseFlash
+/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccna9Das.s:354    .text.Ap_ST32BL_EraseFlash:0000000000000040 $d
+/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccna9Das.s:364    .text.Ap_ST32BL_CheckFlashSector:0000000000000000 $t
+/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccna9Das.s:369    .text.Ap_ST32BL_CheckFlashSector:0000000000000000 Ap_ST32BL_CheckFlashSector
+/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccna9Das.s:447    .text.Ap_ST32BL_CheckFlashSector:0000000000000048 $d
+/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccna9Das.s:455    .text.Ap_ST32BL_WriteFlash:0000000000000000 $t
+/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccna9Das.s:460    .text.Ap_ST32BL_WriteFlash:0000000000000000 Ap_ST32BL_WriteFlash
+/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccna9Das.s:559    .text.Ap_ST32BL_WriteFlash:0000000000000058 $d
+/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccna9Das.s:565    .text.Ap_ST32BL_JumpToApp:0000000000000000 $t
+/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccna9Das.s:570    .text.Ap_ST32BL_JumpToApp:0000000000000000 Ap_ST32BL_JumpToApp
+/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccna9Das.s:628    .text.Ap_ST32BL_JumpToApp:000000000000002c $d
+/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccna9Das.s:637    .text.Ap_ST32BL_Main:0000000000000000 $t
+/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccna9Das.s:642    .text.Ap_ST32BL_Main:0000000000000000 Ap_ST32BL_Main
+/var/folders/bz/nn5481rn5xq59rb0mbj7x0880000gn/T//ccna9Das.s:907    .text.Ap_ST32BL_Main:0000000000000108 $d
                      .debug_frame:0000000000000010 $d
 
 UNDEFINED SYMBOLS
