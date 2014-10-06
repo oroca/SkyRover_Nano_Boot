@@ -74,6 +74,8 @@ void Ap_ST32BL_Init( void )
 	u32 i;
 
 
+	//-- GPIO 입력핀으로 부트로더 실행 검사  
+	//
 	REG_GPIOB_CRL &= ~(0x0F << (0));	// Clear
 	REG_GPIOB_CRL |=  (0x00 << (0));	// MODE, PB.0 Input Mode
 	REG_GPIOB_CRL |=  (0x02 << (2));	// CNF,  PB.0 input	pull-up/pull-down
@@ -89,6 +91,25 @@ void Ap_ST32BL_Init( void )
 	{
 		Ap_ST32BL_RunBoot = FALSE;
 	}
+
+
+	//-- 워치독 리셋이면 부트로더 실행 
+	//
+	if( REG_RCC_CSR & (1<<29) )
+	{
+		Ap_ST32BL_RunBoot = TRUE;
+
+		REG_RCC_CSR = (1<<24);		// Clear Bit
+	}
+
+
+	//-- 펌웨어가 없어도 부트로더 실행
+	//
+	if( *(u32 *)(HW_ST32BL_FLASH_START_ADDRESS+ 4) == 0xFFFFFFFF )
+	{
+		Ap_ST32BL_RunBoot = TRUE;
+	}	
+
 
 	for( i=0; i<128; i++ )
 	{

@@ -35,6 +35,9 @@
 
 
 
+#define _BOOT_VER_STR_	"\r\nBootLoader : V141006R1\r\n"
+
+
 //-- 내부 선언
 //
 
@@ -81,11 +84,16 @@ int main(void)
 	Main_Init();
 
 
+	//-- 버전 출력
+	//
+	Hw_Uart_PrintEx( HW_UART_COM1, _BOOT_VER_STR_ );
 	
+
 	if( Ap_ST32BL_RunBoot == TRUE )
 	{
-		//Lb_printf("a");
-		//Hw_VCom_Init();
+
+		Hw_Uart_PrintEx( HW_UART_COM1, "Ready to download..\r\n");
+
 
 		//-- 먼저 명령을 보낸 포트로 다운로드 시작 
 		//

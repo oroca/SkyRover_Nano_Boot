@@ -44,6 +44,16 @@
 
 
 
+//-- IWDG
+//
+#define REG_IWDG_BASE					0x40003000
+#define REG_IWDG_KR						(*(volatile unsigned long *)(REG_IWDG_BASE + 0x0000))
+#define REG_IWDG_PR						(*(volatile unsigned long *)(REG_IWDG_BASE + 0x0004))
+#define REG_IWDG_RLR					(*(volatile unsigned long *)(REG_IWDG_BASE + 0x0008))
+#define REG_IWDG_SR						(*(volatile unsigned long *)(REG_IWDG_BASE + 0x000C))
+
+
+
 //-- FLASH Memory
 //
 #define REG_FLASH_BASE					0x40022000
